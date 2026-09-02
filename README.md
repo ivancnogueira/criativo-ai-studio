@@ -81,6 +81,28 @@ O onboarding visual mantém cinco camadas sincronizadas:
 | Anúncio | 1080×1350 (4:5) | Criativos de mídia paga |
 | Stories | 1080×1920 (9:16) | Conteúdo efêmero vertical |
 
+## Como usar as skills no chat
+
+Após a instalação, execute uma vez para habilitar os comandos de barra:
+
+```powershell
+npm run instalar-skills
+```
+
+Depois reabra o Antigravity IDE. Agora você pode usar tanto comandos `/` quanto linguagem natural:
+
+| Comando `/` | Ou peça assim... | O que faz |
+|---|---|---|
+| `/planejar-conteudo` | "Monte o calendário da semana" | Estratégia editorial e pautas |
+| `/copywriter-instagram` | "Escreva a legenda desse post" | Headlines, legendas e CTAs |
+| `/criar-post-individual` | "Crie um post sobre meu serviço" | Arte única orgânica 1080×1350 |
+| `/criar-carrossel` | "Faça um carrossel de 5 slides sobre IA" | Sequência de slides 1080×1350 |
+| `/criar-post-anuncio` | "Crie um criativo para campanha de leads" | Arte de tráfego pago 1080×1350 |
+| `/gerar-stories` | "Crie um story avisando do novo post" | Vertical 1080×1920 |
+| `/criar-identidade-visual` | "Redesenhe as cores e fontes da marca" | Brandbook e design system |
+| `/configurar-instagram` | "Configure a integração com o Instagram" | Meta API e GitHub Pages |
+| `/analise-metricas` | "Analise a performance dos últimos posts" | Diagnóstico e otimização |
+
 ## Scripts disponíveis
 
 ```powershell
@@ -98,6 +120,7 @@ npm run aprovar:criar       # Cria job de aprovação
 npm run aprovar:listar      # Lista jobs pendentes
 npm run pages:publicar      # Publica no GitHub Pages
 npm run atualizar           # Atualiza para a versão mais recente
+npm run instalar-skills     # Registra comandos / no Antigravity IDE
 npm test                    # Executa validação e testes
 ```
 

@@ -27,7 +27,8 @@
     "pages:publicar": "node automacoes/publicar-github-pages.mjs",
     "pages:validar": "node automacoes/publicar-github-pages.mjs --validar",
     "atualizar": "node automacoes/atualizar.mjs",
-    "atualizar:forcar": "node automacoes/atualizar.mjs --forcar"
+    "atualizar:forcar": "node automacoes/atualizar.mjs --forcar",
+    "instalar-skills": "node automacoes/instalar-skills.mjs"
   },
   "dependencies": {
     "sharp": "^0.35.4"

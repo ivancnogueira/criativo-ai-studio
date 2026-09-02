@@ -26,6 +26,10 @@ Este guia define o fluxo do onboarding no Criativo AI Studio. O processo é um f
   PREVIEW_PORT=4173
   ```
 - Garanta a existência das pastas `conteudos/`, `documentacao/`, `recursos/fotos/`, `recursos/logos/`, `recursos/referencias/`, `saidas/`, `previas/`, `runtime/` e `logs/`.
+- Instale as skills como comandos de barra para que o usuário possa usar `/criar-carrossel`, `/gerar-stories`, etc:
+  ```powershell
+  npm run instalar-skills
+  ```
 - Mostre a tabela dos 6 marcos e avance para o Marco 2.
 
 ---
