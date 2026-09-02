@@ -1,6 +1,6 @@
 {
   "name": "criativo-ai-studio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Produção premium de conteúdo para Instagram usando Antigravity IDE e IA generativa.",
   "type": "module",
@@ -25,7 +25,9 @@
     "aprovar:local": "node automacoes/ponte-de-aprovacao.mjs --aprovar-local",
     "aprovar:listar": "node automacoes/ponte-de-aprovacao.mjs --listar",
     "pages:publicar": "node automacoes/publicar-github-pages.mjs",
-    "pages:validar": "node automacoes/publicar-github-pages.mjs --validar"
+    "pages:validar": "node automacoes/publicar-github-pages.mjs --validar",
+    "atualizar": "node automacoes/atualizar.mjs",
+    "atualizar:forcar": "node automacoes/atualizar.mjs --forcar"
   },
   "dependencies": {
     "sharp": "^0.35.4"

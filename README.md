@@ -97,7 +97,34 @@ npm run publicar-instagram  # Dry-run de publicação
 npm run aprovar:criar       # Cria job de aprovação
 npm run aprovar:listar      # Lista jobs pendentes
 npm run pages:publicar      # Publica no GitHub Pages
+npm run atualizar           # Atualiza para a versão mais recente
 npm test                    # Executa validação e testes
+```
+
+## Atualizações
+
+### Quem instalou via Git (clone)
+
+```powershell
+git pull origin main
+npm install
+```
+
+### Quem instalou via ZIP (área de membros)
+
+```powershell
+npm run atualizar
+npm install
+```
+
+O script `atualizar` baixa a versão mais recente do GitHub, aplica os arquivos de sistema (skills, automações, documentação, templates e testes) e **preserva 100% dos seus dados** (perfil, identidade visual, fotos, logos, referências, saídas, prévias, `.env` e configurações).
+
+Um backup automático é criado em `runtime/.backup-vX.X.X-...` antes de cada atualização.
+
+Para forçar a reaplicação mesmo estando na mesma versão:
+
+```powershell
+npm run atualizar:forcar
 ```
 
 ## Estrutura principal
