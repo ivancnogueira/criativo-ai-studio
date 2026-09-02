@@ -8,6 +8,7 @@ const arquivos = [
   'package.json',
   'README.md',
   'INSTALAR.md',
+  'INSTALAR-COM-ANTIGRAVITY.md',
   'GEMINI.md',
   '.env.example',
   'automacoes/configurar.mjs',

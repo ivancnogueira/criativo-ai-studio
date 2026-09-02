@@ -8,20 +8,29 @@ O Criativo AI Studio é uma fundação local e instalável para organizar o perf
 
 Pré-requisitos: Node.js 20 ou superior e Antigravity IDE.
 
-### Instalação
+### Modo 1: Instalação com 1-Clique no Antigravity IDE (Recomendado)
 
-1. Extraia o arquivo zip em uma pasta de sua escolha.
-2. Abra o terminal na pasta extraída e execute:
+Abra o chat do Antigravity IDE em qualquer pasta vazia e envie o prompt:
+
+```text
+Instale o Criativo AI Studio a partir de https://github.com/ivancnogueira/criativo-ai-studio.git em uma nova pasta criativo-ai-studio no diretório atual. Depois do clone, leia integralmente GEMINI.md, README.md, documentacao/onboarding-guiado.md e documentacao/configurar-github-pages.md. Conduza a instalação e o onboarding em 6 marcos até a primeira publicação real.
+```
+
+Leia [INSTALAR-COM-ANTIGRAVITY.md](INSTALAR-COM-ANTIGRAVITY.md) para o prompt completo e detalhado.
+
+### Modo 2: Download do Zip (Área de Membros) ou Terminal
+
+1. Extraia o arquivo zip baixado da área de membros.
+2. Abra o terminal na pasta e execute:
 
 ```powershell
 npm install
 npm run configurar
 ```
 
-3. Abra a pasta no Antigravity IDE.
-4. O agente detecta o projeto e conduz o onboarding automaticamente.
+3. Abra a pasta no Antigravity IDE e peça ao agente para iniciar o onboarding.
 
-Leia [INSTALAR.md](INSTALAR.md) para o guia completo de instalação.
+Leia [INSTALAR.md](INSTALAR.md) para instruções adicionais de ambiente.
 
 ### Onboarding
 

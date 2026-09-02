@@ -6,14 +6,17 @@
 - **Antigravity IDE** — extensão instalada no VS Code
 - **Git** (opcional, para versionamento)
 
-## Passo a passo
+## Modos de instalação
+
+### Modo 1: 1-Clique via Antigravity IDE (com Git)
+Basta copiar o prompt em [INSTALAR-COM-ANTIGRAVITY.md](INSTALAR-COM-ANTIGRAVITY.md) e colar no chat do Antigravity. O agente faz o clone, instalação e conduz o onboarding.
+
+### Modo 2: Download do Zip (Área de Membros)
 
 ### 1. Extraia o arquivo
-
 Extraia o arquivo zip baixado da área de membros em uma pasta de sua escolha.
 
 ### 2. Instale as dependências
-
 Abra o terminal na pasta extraída e execute:
 
 ```powershell
@@ -21,7 +24,6 @@ npm install
 ```
 
 ### 3. Configure o ambiente
-
 Execute o configurador interativo:
 
 ```powershell
