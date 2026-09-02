@@ -1,0 +1,17 @@
+# Dependências
+node_modules/
+
+# Ambiente local
+.env
+
+# Estado e auditoria locais
+runtime/
+logs/
+
+# Saídas geradas (opcionalmente versionáveis)
+# saidas/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log

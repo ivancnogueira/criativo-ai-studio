@@ -1,0 +1,10 @@
+estado: nao_iniciado
+marcos:
+  instalacao: pendente
+  perfil: pendente
+  identidade_visual: pendente
+  configuracoes: pendente
+  primeiro_post: pendente
+  postagem: pendente
+proximo_passo: 'Abrir no Antigravity IDE e iniciar o onboarding.'
+atualizado_em: ''

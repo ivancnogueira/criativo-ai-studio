@@ -1,0 +1,33 @@
+{
+  "name": "criativo-ai-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Produção premium de conteúdo para Instagram usando Antigravity IDE e IA generativa.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "configurar": "node automacoes/configurar.mjs",
+    "configurar:local": "node automacoes/configurar.mjs --modo local",
+    "onboarding": "node automacoes/onboarding.mjs",
+    "status": "node automacoes/status-onboarding.mjs",
+    "diagnosticar": "node automacoes/diagnosticar.mjs",
+    "validar:integracoes": "node automacoes/validar-integracoes.mjs",
+    "validar": "node automacoes/validar-estrutura.mjs",
+    "test": "node automacoes/validar-estrutura.mjs && node --test testes/configuracao.test.mjs testes/fila.test.mjs testes/onboarding.test.mjs testes/preview.test.mjs testes/identidade.test.mjs",
+    "criar-previa": "node automacoes/criar-previa.mjs",
+    "atualizar-vitrine": "node automacoes/atualizar-vitrine.mjs",
+    "preview": "node automacoes/servidor-previas.mjs",
+    "publicar-instagram": "node automacoes/publicar-instagram.mjs --dry-run",
+    "publicar-instagram:aprovado": "node automacoes/publicar-instagram.mjs --publicar-aprovado",
+    "aprovar:criar": "node automacoes/ponte-de-aprovacao.mjs --criar",
+    "aprovar:local": "node automacoes/ponte-de-aprovacao.mjs --aprovar-local",
+    "aprovar:listar": "node automacoes/ponte-de-aprovacao.mjs --listar",
+    "pages:publicar": "node automacoes/publicar-github-pages.mjs",
+    "pages:validar": "node automacoes/publicar-github-pages.mjs --validar"
+  },
+  "dependencies": {
+    "sharp": "^0.35.4"
+  }
+}

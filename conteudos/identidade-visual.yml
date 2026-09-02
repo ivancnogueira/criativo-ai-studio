@@ -1,0 +1,17 @@
+tema: claro
+cores:
+  cor_fundo: '#F4F1EA'
+  cor_texto: '#142C2C'
+  cor_destaque: '#2A9D8F'
+  cor_secundaria: '#142C2C'
+  cor_acento: '#E9C46A'
+fontes:
+  fonte_titulo: 'A definir'
+  fonte_texto: 'A definir'
+  fonte_apoio: 'A definir'
+usuario: 'Sua marca'
+recursos:
+  logo: 'A definir'
+  fotos: []
+  referencias: []
+  direitos_de_uso: 'A definir'

@@ -1,0 +1,11 @@
+{
+  "slug": "demonstracao-removivel",
+  "tipo": "carrossel",
+  "titulo": "Exemplo de Publicação",
+  "legenda": "Esta é uma publicação de exemplo para testar o fluxo completo do Criativo AI Studio.",
+  "slides": [
+    { "titulo": "Primeiro Slide", "apoio": "Texto de apoio do primeiro slide" },
+    { "titulo": "Segundo Slide", "apoio": "Texto de apoio do segundo slide" },
+    { "titulo": "Terceiro Slide", "apoio": "Texto de apoio do terceiro slide" }
+  ]
+}

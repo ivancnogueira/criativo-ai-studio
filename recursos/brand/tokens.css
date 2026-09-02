@@ -1,0 +1,27 @@
+/* Tokens visuais da marca — preenchidos durante o onboarding */
+
+:root {
+  /* Cores */
+  --cor-fundo: #F4F1EA;
+  --cor-texto: #142C2C;
+  --cor-destaque: #2A9D8F;
+  --cor-secundaria: #142C2C;
+  --cor-acento: #E9C46A;
+
+  /* Fontes */
+  --fonte-titulo: Arial, sans-serif;
+  --fonte-texto: Arial, sans-serif;
+  --fonte-apoio: Arial, sans-serif;
+
+  /* Espaçamentos */
+  --margem-segura: 80px;
+  --espaco-entre-blocos: 24px;
+  --raio-borda: 12px;
+
+  /* Tamanhos de fonte */
+  --titulo-grande: 72px;
+  --titulo-medio: 48px;
+  --titulo-pequeno: 28px;
+  --corpo: 20px;
+  --legenda: 14px;
+}
