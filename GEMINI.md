@@ -9,7 +9,10 @@ Este repositório é uma fundação local e adaptável de produção de conteúd
 1. **Estilo Camaleônico (Guiado pelas Referências do Usuário):**
    - **NÃO imponha um estilo fixo.** Cada marca possui sua própria identidade (clean, rústico, corporativo, vibrante, luxuoso, minimalista ou tech).
    - **SEMPRE** inspecione visualmente as imagens em `recursos/referencias/` para absorver o estilo, diagramação, iluminação e atmosfera visual desejada pelo usuário.
-   - Passe as referências estéticas e a foto/produto em `ImagePaths` no `generate_image` para que a geração respeite a direção visual da marca.
+   - **BLINDAGEM ANTI-CÓPIA DE REFERÊNCIAS:** Referências servem **EXCLUSIVAMENTE** para inspiração visual de iluminação, diagramação e estética. **NUNCA copie nomes de designers, especialistas, empresas, @handles, marcas d'água, assinaturas ou logos das referências** (ex: @boccalini, Ivan Nogueira, etc.).
+   - **IDENTIDADE OFICIAL & LOGOS:** Toda assinatura deve vir de `conteudos/identidade-visual.yml` (`@usuario`) e `conteudos/perfil-da-marca.md`. Quando houver arquivos em `recursos/logos/` (ex: `logo.png`, `icone.png`), passe-os em `ImagePaths` e aplique de forma discreta com respiro adequado. Se não houver logo, use apenas a assinatura do `@usuario` oficial.
+   - **DIVERSIDADE E CONSISTÊNCIA FACIAL DE FOTOS:** Inspecione todo o acervo em `recursos/fotos/` e **varie as fotos utilizadas entre posts consecutivos** (alternando poses, ângulos, roupas e enquadramentos). Ao gerar novas cenas com o rosto do titular, use cláusula de preservação facial no prompt (`SUBJECT / FACIAL CONSISTENCY`) com a foto de referência em `ImagePaths`.
+   - Passe as referências estéticas, fotos selecionadas e logo em `ImagePaths` no `generate_image` incluindo instruções de isolamento negativo no prompt.
    - Respeite rigorosamente a paleta de cores e fontes definidas em `conteudos/identidade-visual.yml` e `recursos/brand/tokens.css`.
    - Garanta princípios universais de bom design: hierarquia visual clara, integração natural de luz e sombras, textos curtos e corretos em português (8 a 15 palavras na arte) e margens seguras (10%).
 

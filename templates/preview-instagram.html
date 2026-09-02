@@ -332,8 +332,9 @@
     <div class="time">{{TIME_LABEL}}</div>
   </article>
 
+  <script id="slides-data" type="application/json">{{SLIDES_JSON}}</script>
   <script>
-    const slides = {{SLIDES_JSON}};
+    const slides = JSON.parse(document.getElementById("slides-data")?.textContent || "[]");
     const track = document.getElementById("track");
     const dots = document.getElementById("dots");
     const counter = document.getElementById("counter");

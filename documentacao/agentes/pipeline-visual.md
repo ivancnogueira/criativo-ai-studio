@@ -29,7 +29,53 @@ Antes de gerar qualquer peça, o agente deve inspecionar visualmente as imagens 
 4. **Tratamento Fotográfico:** A fotografia é espontânea, de estúdio, lifestyle, macro ou conceitual?
 5. **Elementos Gráficos:** As referências usam selos, molduras, linhas finas, texturas, ícones, ou são 100% fotográficas e limpas?
 
-Ao chamar `generate_image`, passe até 2 referências estéticas de `recursos/referencias/` + a foto/produto de `recursos/fotos/` no parâmetro `ImagePaths` para que o gerador absorva o estilo visual exato da marca.
+### 🚫 REGRA CRÍTICA: Blindagem Anti-Cópia de Referências (Anti-Leakage)
+- As imagens em `recursos/referencias/` pertencem a terceiros ou servem **EXCLUSIVAMENTE** para extração de diretrizes estéticas (layout, luz, textura, composição).
+- **É ESTRITAMENTE PROIBIDO copiar ou deixar vazar para a imagem gerada**:
+  - Nomes de profissionais, especialistas, designers, criadores ou marcas das referências (ex.: "Ivan Nogueira - Especialista em I.A.", "Boccalini Designer", etc.).
+  - Arrobas (@handles), perfis de redes sociais ou links presentes nas imagens de referência (ex.: `@boccalini`).
+  - Assinaturas, cargos, títulos, marcas d'água, carimbos, selos ou logos de terceiros.
+  - Textos, copies ou slogans que façam parte das peças de referência.
+- **FONTE ÚNICA DE IDENTIDADE**: A única assinatura/arroba permitida na imagem é a do usuário atual definida em `conteudos/identidade-visual.yml` (campo `usuario`) ou o nome/título oficial do titular em `conteudos/perfil-da-marca.md`. Se não houver @handle ou titular especificado, **não insira nenhum @, nome ou cargo inventado na imagem**.
+
+---
+
+## 📸 Seleção, Variação e Consistência Facial das Fotos (`recursos/fotos/`)
+
+Quando a pasta `recursos/fotos/` contiver fotos da pessoa/titular da marca:
+
+1. **Variação Ativa do Acervo (NÃO Repetir a Mesma Foto):**
+   - Inspecione **todas as imagens** presentes em `recursos/fotos/` antes de cada geração.
+   - **Alterne os ângulos, roupas e expressões** entre posts consecutivos: fotos de close, meio-corpo, corpo inteiro, postura séria/estratégica, momentos espontâneos ou em ação.
+   - Nunca utilize repetidamente a mesma foto se o acervo contiver múltiplas opções disponíveis.
+
+2. **Geração de Novas Composições com o Rosto do Usuário (*Facial Consistency*):**
+   - O agente pode gerar **novos cenários, posturas, ambientes modernos ou iluminações de estúdio** preservando a identidade da pessoa.
+   - Passe a foto selecionada do usuário em `ImagePaths`.
+   - Inclua no prompt a instrução explícita de consistência facial:
+     `"SUBJECT / FACIAL CONSISTENCY: The main person in the image MUST be the exact subject from the reference photo in ImagePaths, maintaining their authentic facial structure, facial features, skin tone, hair, and likeness. Place this exact person naturally in [CENARIO_DESEJADO: ex. modern high-tech office / warm studio setting / speaking with confidence], with realistic photorealistic lighting matching the scene."`
+
+---
+
+## 🏷️ Uso de Logo e Ícone da Marca (Quando Disponível)
+
+Quando a marca possuir arquivos de logotipo ou ícone em `recursos/logos/`:
+
+1. **Localização e Formatos:**
+   - Inspecione `recursos/logos/` (ex: `logo.png`, `logo-dark.png`, `icone.png`, `simbolo.svg`).
+   - Confirme se o arquivo está registrado em `conteudos/identidade-visual.yml` (`recursos.logo`).
+
+2. **Como Incluir no `generate_image`:**
+   - Adicione o caminho do logo/ícone em `ImagePaths` (ex: `["recursos/logos/logo.png", "recursos/referencias/ref.jpg", "recursos/fotos/foto.jpg"]`).
+   - No prompt, especifique a posição exata e a aplicação:
+     - **Canto Superior (Top-Left ou Top-Center):** Ideal para carrosséis institucionais, relatórios e posts autorais. Manter margem segura (mínimo 80px das bordas).
+     - **Rodapé / Assinatura (Bottom-Left ou Bottom-Center):** Acompanhando sutilmente a identificação `@usuario`.
+     - **Ícone / Símbolo:** Para peças minimalistas, preferir o símbolo/monograma isolado em vez do logo extenso.
+   - Instrução de prompt: *"Subtly place the official brand logo/icon from ImagePaths in the top-left corner, preserving clean margins, crisp edges, and correct contrast against the background."*
+
+3. **Quando NÃO houver arquivo de logo disponível:**
+   - Utilize apenas a assinatura tipográfica limpa do `@usuario` oficial (conforme `identidade-visual.yml`).
+   - **NUNCA invente um logo gráfico aleatório ou assinatura fictícia.**
 
 ---
 
@@ -41,7 +87,7 @@ Independentemente do estilo da marca (seja clean, rústico, luxuoso ou vibrante)
 O olhar de quem rola o feed deve saber instantaneamente onde focar:
 - **Ponto Focal:** A imagem principal (pessoa, produto, ambiente ou ilustração) ou a headline deve ser o elemento dominante.
 - **Títulos e Subtítulos:** Contraste tipográfico claro entre o que é título principal e o que é texto de apoio.
-- **Identificação da Marca:** Logotipo, selo editorial ou assinatura `@usuario` discretos e harmônicos com a composição.
+- **Identificação da Marca:** Logotipo/ícone oficial (`recursos/logos/`) ou assinatura `@usuario` do projeto (`conteudos/identidade-visual.yml`), discretos e harmônicos. NUNCA use dados de terceiros.
 
 ### 2. Integração Fotográfica e Harmonia
 - A foto da pessoa ou produto fornecida deve estar em harmonia com a luz, sombras e cores do cenário de fundo.
@@ -58,7 +104,7 @@ O olhar de quem rola o feed deve saber instantaneamente onde focar:
 
 ## 📋 Estrutura Dinâmica de Prompt para `generate_image`
 
-O prompt deve descrever a direção de arte com base no que foi extraído dos arquivos da marca:
+O prompt deve descrever a direção de arte com base no que foi extraído dos arquivos da marca e conter a cláusula anti-cópia:
 
 ```text
 Prompt: "Professional graphic design for Instagram post (3:4 aspect ratio, 1080x1350).
@@ -68,18 +114,24 @@ COMPOSITION:
 - Headline: Clear high-contrast text in Brazilian Portuguese reading '[HEADLINE_EXATA_AQUI]'.
 - Supporting text: Clean subtitle reading '[SUBTITULO_AQUI]'.
 - Subject: [PESSOA/PRODUTO] from the reference photos naturally integrated with matching lighting and realistic environment.
-- Details: [ELEMENTOS_ESPECIFICOS_DA_MARCA: selos, grafismos ou minimalismo puro conforme o design system].
-- Branding: Subtle brand identification '@[USUARIO]'.
+- Logo/Icon: [SE_HOUVER: Official brand logo from ImagePaths placed subtly in top-left with padding / SE_NAO_HOUVER: None].
+- Branding: Subtle brand identification '@[USUARIO_ATUAL]' (or omitted if none provided).
+STRICT NEGATIVE/ISOLATION INSTRUCTIONS:
+- Do NOT copy, transcribe, or include any names, titles, credentials, handles, watermarks, signatures, or logos from the reference images (do NOT copy names like 'Ivan Nogueira', 'Boccalini', or any reference author/specialist text).
+- Use reference images ONLY for lighting, layout structure, and aesthetic mood.
 QUALITY: Ultra-crisp graphic design, beautiful typography hierarchy, photorealistic lighting matching the brand's aesthetic, perfect margins."
-ImagePaths: ["recursos/referencias/referencia-estilo.jpg", "recursos/fotos/foto-usuario.jpg"]
+ImagePaths: ["recursos/referencias/referencia-estilo.jpg", "recursos/fotos/foto-usuario.jpg", "recursos/logos/logo.png"]
 AspectRatio: "3:4"
 ```
 
 ---
 
-## 🔍 Quality Gates Visuais
+## 🔍 Quality Gates Visuais (Bloqueantes)
 
 - [ ] A arte reflete fielmente o estilo, cores e clima das referências em `recursos/referencias/`?
+- [ ] **NENHUM nome, cargo, @handle, logo ou dado de terceiros das referências visuais vazou para a arte?** (Se houver vazamento de referência, REJEITE e gere novamente).
+- [ ] **A foto utilizada varia em relação aos posts anteriores**, explorando a diversidade do acervo em `recursos/fotos/` e mantendo a consistência facial autêntica do titular?
+- [ ] O logo ou ícone oficial da marca (se disponível em `recursos/logos/`) foi aplicado com respiro e sem distorções?
 - [ ] A paleta de cores respeita `conteudos/identidade-visual.yml` e `tokens.css`?
 - [ ] O texto está correto em português e legível no smartphone?
 - [ ] O layout tem hierarquia clara e margens seguras?

@@ -8,6 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "postinstall": "node automacoes/instalar-skills.mjs",
     "configurar": "node automacoes/configurar.mjs",
     "configurar:local": "node automacoes/configurar.mjs --modo local",
     "onboarding": "node automacoes/onboarding.mjs",

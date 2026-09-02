@@ -13,8 +13,9 @@ Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/quali
 
 ## 🎨 Princípios de Criação de Anúncios
 
-1. **Uso de Referências do Usuário:**
+1. **Uso de Referências do Usuário (APENAS Composição e Estilo):**
    - Inspecione `recursos/referencias/` para identificar referências de anúncios e layouts preferidos.
+   - **REGRA CRÍTICA ANTI-CÓPIA:** Referências servem unicamente para direção visual e composição. **NUNCA copie nomes de designers, empresas, arrobas (@handles), marcas d'água, assinaturas ou logos das referências.** Toda identificação deve vir estritamente de `conteudos/identidade-visual.yml`.
    - Passe as referências e fotos em `ImagePaths` no `generate_image`.
 
 2. **Composição em 3 Camadas:**
@@ -30,6 +31,7 @@ Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/quali
 ## 🛠️ Passo a Passo de Execução
 
 1. Defina a hipótese, o público e o objetivo da campanha.
-2. Invoque `generate_image` com aspect ratio `3:4` (1080×1350) e `ImagePaths`.
+2. Invoque `generate_image` com aspect ratio `3:4` (1080×1350), `ImagePaths` e cláusula anti-cópia: *"STRICT RULE: Do NOT copy any names, @handles, signatures, or logos from reference images. Branding must strictly be '@[USUARIO_DO_PROJETO]' or omitted."*
 3. Salve em `saidas/posts-de-anuncio/{slug}/slide-01.png`.
 4. Crie `publicacao.json` com tipo `post-anuncio`, gere o preview com `npm run criar-previa` e atualize a vitrine.
+5. Verifique se nenhum dado/arroba de terceiros vazou para o criativo antes de enviar para aprovação.

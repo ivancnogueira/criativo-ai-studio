@@ -40,7 +40,8 @@ Também podem existir `ajustes_solicitados`, `cancelado` e `erro`. Aprovação d
 
 - Nunca invente preço, prazo, resultado, depoimento, estatística, credencial ou característica de produto.
 - Diferencie fato fornecido, inferência estratégica e sugestão criativa.
-- Use apenas ativos fornecidos ou autorizados. Referência inspira princípios; não autoriza cópia.
+- Use apenas ativos fornecidos ou autorizados. Referência inspira princípios de composição e estética; **NUNCA autoriza copiar nomes, @handles, assinaturas, logos ou cargos presentes em referências**.
+- Toda identificação de marca e assinatura deve vir exclusivamente de `conteudos/identidade-visual.yml` e `conteudos/perfil-da-marca.md`. Quando houver arquivos em `recursos/logos/`, use o logo/ícone oficial da marca.
 - Preserve voz, nível de consciência e estágio de relacionamento do público.
 - Faça uma publicação cumprir um objetivo primário e um CTA primário.
 - Não exponha segredos nem solicite tokens no chat.

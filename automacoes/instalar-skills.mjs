@@ -28,15 +28,14 @@ async function copiarDiretorio(origem, destino) {
   }
 }
 
-async function main() {
+export async function instalarSkills() {
   const skillsDir = join(raiz, '.agents', 'skills');
   const skills = await readdir(skillsDir, { withFileTypes: true });
   const nomes = skills.filter((e) => e.isDirectory()).map((e) => e.name);
 
   if (!nomes.length) {
     console.error('Nenhuma skill encontrada em .agents/skills/');
-    process.exitCode = 1;
-    return;
+    return { total: 0 };
   }
 
   console.log('Instalando skills do Criativo AI Studio como comandos de barra (/)\n');
@@ -68,10 +67,11 @@ async function main() {
   for (const nome of nomes) {
     console.log(`  /${nome}`);
   }
+  return { total: instaladas, nomes };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch((e) => {
+  instalarSkills().catch((e) => {
     console.error(`Instalação de skills falhou: ${e.message}`);
     process.exitCode = 1;
   });

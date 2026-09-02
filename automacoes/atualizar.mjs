@@ -226,6 +226,16 @@ export async function atualizar({ url = ZIP_URL, forcar = false } = {}) {
   // 5. Limpar temporários
   await rm(tmpDir, { recursive: true, force: true });
 
+  // 6. Atualizar skills globais no Antigravity IDE
+  try {
+    const { instalarSkills } = await import('./instalar-skills.mjs');
+    if (typeof instalarSkills === 'function') {
+      await instalarSkills();
+    }
+  } catch {
+    // Continua mesmo se a importação direta falhar
+  }
+
   console.log(`\n✅ Atualização concluída: v${versaoAtual} → v${info.versao}`);
   console.log('Execute npm install para atualizar dependências se necessário.');
   console.log('Execute npm test para validar a integridade.');

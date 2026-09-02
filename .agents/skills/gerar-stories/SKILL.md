@@ -18,8 +18,9 @@ Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/quali
    - **Rodapé (20% inferior - aprox. 350px):** Reservado para campo "Enviar Mensagem" e reações. Não coloque CTAs críticos colados no rodapé.
    - **Área Central Segura (65% intermediário):** Onde ficam o ponto focal, fotos, headline e cards visuais.
 
-2. **Uso de Referências Verticais:**
+2. **Uso de Referências Verticais (APENAS Composição e Estilo):**
    - Inspecione `recursos/referencias/` para extrair composições verticais elegantes.
+   - **REGRA CRÍTICA ANTI-CÓPIA:** Referências servem apenas para formato, layout e luz. **NUNCA copie nomes de designers, empresas, arrobas (@handles), marcas d'água ou textos das referências.** Use apenas o `@usuario` oficial do projeto (`conteudos/identidade-visual.yml`) ou não coloque arroba.
    - Passe referências em `ImagePaths` no `generate_image`.
 
 3. **Elementos Interativos Simulados:**
@@ -35,7 +36,8 @@ Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/quali
 2. **Geração via `generate_image`:**
    - AspectRatio: `"9:16"` (1080×1920).
    - Passe a foto do usuário e a referência visual em `ImagePaths`.
-   - Prompt com instruções verticais e margens seguras.
+   - Prompt com instruções verticais, margens seguras e **cláusula anti-cópia**: *"STRICT RULE: Do NOT copy any names, @handles, signatures, or logos from reference images. Branding must strictly be '@[USUARIO_DO_PROJETO]' or omitted."*
 3. **Salvar e Visualizar:**
    - Salve em `saidas/stories/{slug}/story-01.png`.
    - Crie o manifesto `publicacao.json` com `tipo: "story"` e gere a prévia com `npm run criar-previa`.
+4. **Revisão e Quality Gate:** Confirme que nenhum dado/arroba de terceiros vazou para o story antes de disponibilizar.

@@ -23,7 +23,7 @@ async function chamar(fetchFn, url, opcoes = {}) {
   return dados;
 }
 
-export async function publicarNaMeta({ fetchFn = fetch, apiVersion, instagramId, token, urls, legenda }) {
+export async function publicarNaMeta({ fetchFn = fetch, apiVersion, instagramId, token, urls, legenda, tipo = 'post' }) {
   const legendaNormalizada = normalizarLegenda(legenda);
   const base = `https://graph.facebook.com/${apiVersion}`;
   const post = (rota, campos) =>
@@ -33,7 +33,9 @@ export async function publicarNaMeta({ fetchFn = fetch, apiVersion, instagramId,
     });
 
   let container;
-  if (urls.length === 1) {
+  if (tipo === 'story' || tipo === 'stories') {
+    container = (await post(`${instagramId}/media`, { image_url: urls[0], media_type: 'STORIES' })).id;
+  } else if (urls.length === 1) {
     container = (await post(`${instagramId}/media`, { image_url: urls[0], caption: legendaNormalizada })).id;
   } else {
     const filhos = [];

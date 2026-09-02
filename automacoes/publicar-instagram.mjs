@@ -79,7 +79,8 @@ export async function executar({ caminhoDados, caminhoJob, dryRun = false, fetch
       instagramId: env.INSTAGRAM_BUSINESS_ID,
       token: env.INSTAGRAM_ACCESS_TOKEN,
       urls: d.urlsPublicas,
-      legenda: d.legenda
+      legenda: d.legenda,
+      tipo: d.tipo || d.formato || 'post'
     });
     job.status = 'publicado';
     job.consumidoEm = new Date().toISOString();

@@ -18,7 +18,7 @@
 
 ## Originalidade e evidência
 
-- Referências foram traduzidas em princípios, não copiadas.
+- Referências foram traduzidas em princípios de composição e estética, nunca copiadas.
 - Dados atuais têm fonte registrada quando a precisão temporal importa.
 - Opiniões são apresentadas como opinião; hipóteses, como hipótese.
 - A publicação acrescenta contexto, ponto de vista, método ou aplicação própria.
@@ -27,6 +27,7 @@
 
 Não avance quando houver:
 
+- qualquer nome, @handle, arroba, logo, assinatura, cargo ou marca d'água de terceiros extraído indevidamente de referências visuais em vez dos dados oficiais da marca do usuário;
 - informação comercial não confirmada;
 - alegação regulada ou sensível sem comprovação;
 - conflito entre briefing e perfil da marca;
