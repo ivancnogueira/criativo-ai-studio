@@ -1,5 +1,19 @@
 const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+/**
+ * Normaliza a legenda para envio à Meta API.
+ * Converte sequências literais \\n em quebras de linha reais (\n).
+ * Remove espaços em branco desnecessários no início/fim.
+ */
+export function normalizarLegenda(texto) {
+  if (!texto) return '';
+  return String(texto)
+    .replace(/\\n/g, '\n')   // \\n literal → newline real
+    .replace(/\r\n/g, '\n')  // CRLF → LF
+    .replace(/\r/g, '\n')    // CR → LF
+    .trim();
+}
+
 async function chamar(fetchFn, url, opcoes = {}) {
   const resposta = await fetchFn(url, opcoes);
   const dados = await resposta.json().catch(() => ({}));
@@ -10,6 +24,7 @@ async function chamar(fetchFn, url, opcoes = {}) {
 }
 
 export async function publicarNaMeta({ fetchFn = fetch, apiVersion, instagramId, token, urls, legenda }) {
+  const legendaNormalizada = normalizarLegenda(legenda);
   const base = `https://graph.facebook.com/${apiVersion}`;
   const post = (rota, campos) =>
     chamar(fetchFn, `${base}/${rota}`, {
@@ -19,13 +34,13 @@ export async function publicarNaMeta({ fetchFn = fetch, apiVersion, instagramId,
 
   let container;
   if (urls.length === 1) {
-    container = (await post(`${instagramId}/media`, { image_url: urls[0], caption: legenda })).id;
+    container = (await post(`${instagramId}/media`, { image_url: urls[0], caption: legendaNormalizada })).id;
   } else {
     const filhos = [];
     for (const image_url of urls) {
       filhos.push((await post(`${instagramId}/media`, { image_url, is_carousel_item: 'true' })).id);
     }
-    container = (await post(`${instagramId}/media`, { media_type: 'CAROUSEL', children: filhos.join(','), caption: legenda })).id;
+    container = (await post(`${instagramId}/media`, { media_type: 'CAROUSEL', children: filhos.join(','), caption: legendaNormalizada })).id;
   }
 
   for (let tentativa = 0; tentativa < 12; tentativa++) {
