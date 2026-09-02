@@ -1,6 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { join } from 'node:path';
+import { isAbsolute, join, relative, resolve } from 'node:path';
 import { auditar, escreverJsonAtomico } from './arquivos.mjs';
 
 export const STATUS = ['rascunho', 'pronto_para_aprovar', 'ajuste_solicitado', 'aprovado', 'publicando', 'publicado', 'cancelado', 'erro'];
@@ -9,23 +9,30 @@ export function codigoValido(codigo) {
   return /^[A-Z0-9][A-Z0-9-]{2,40}$/.test(codigo || '');
 }
 
-export async function calcularFingerprint(publicacao) {
+export async function calcularFingerprint(publicacao, raiz = process.cwd()) {
   const hash = createHash('sha256');
+  const imagensNormalizadas = (publicacao.imagens || []).map((img) => {
+    const abs = isAbsolute(img) ? img : resolve(raiz, img);
+    return relative(raiz, abs).replaceAll('\\', '/');
+  });
+
   const contrato = {
     id: publicacao.id || '',
     slug: publicacao.slug || '',
     tipo: publicacao.tipo || '',
     titulo: publicacao.titulo || '',
     legenda: publicacao.legenda || '',
-    imagens: publicacao.imagens || [],
+    imagens: imagensNormalizadas,
     urlsPublicas: publicacao.urlsPublicas || []
   };
   hash.update(JSON.stringify(contrato));
-  for (const caminho of contrato.imagens) {
+
+  for (const img of publicacao.imagens || []) {
+    const abs = isAbsolute(img) ? img : resolve(raiz, img);
     try {
-      hash.update(await readFile(caminho));
+      hash.update(await readFile(abs));
     } catch (erro) {
-      if (erro.code === 'ENOENT') hash.update(`arquivo-ausente:${caminho}`);
+      if (erro.code === 'ENOENT') hash.update(`arquivo-ausente:${abs}`);
       else throw erro;
     }
   }
@@ -45,7 +52,7 @@ export async function criarJob(raiz, publicacao) {
     if (erro.code !== 'ENOENT') throw erro;
   }
   const agora = new Date().toISOString();
-  const fingerprint = await calcularFingerprint(publicacao);
+  const fingerprint = await calcularFingerprint(publicacao, raiz);
   const job = {
     id,
     codigo: id,
@@ -78,7 +85,7 @@ export async function alterarJob(raiz, codigo, remetente, acao, observacao = '')
     if (job.status !== 'pronto_para_aprovar') {
       throw new Error(`A tarefa ${job.id} não está pronta para aprovação.`);
     }
-    if (job.fingerprint !== (await calcularFingerprint(job.publicacao))) {
+    if (job.fingerprint !== (await calcularFingerprint(job.publicacao, raiz))) {
       throw new Error(`A publicação ${job.id} mudou após entrar na fila. Crie uma nova solicitação.`);
     }
     Object.assign(job, { status: 'aprovado', aprovadoPor: String(remetente), aprovadoEm: agora });

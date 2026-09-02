@@ -1,70 +1,41 @@
 ---
 name: criar-post-anuncio
-description: Desenvolva criativos estáticos premium para anúncios de Instagram com estratégia de teste, copy, generate_image, ativos reais, políticas, variantes, revisão, preview e aprovação.
+description: Desenvolva criativos estáticos de alta conversão para anúncios de Instagram com design editorial, copy testável, generate_image, referências reais e aprovação.
 ---
 
-# Criar Post de Anúncio
+# Criar Post de Anúncio (Alta Conversão & Produção Premium)
 
-Atue como estrategista de criativos e diretora de arte para mídia paga. A função é construir hipóteses testáveis, não apenas uma arte bonita. Esta skill não cria nem ativa campanhas.
+Atue como diretora de arte e estrategista de criativos para mídia paga (Meta Ads). O criativo precisa interromper o scroll no feed com alto padrão estético, clareza imediata de proposta de valor e conformidade com as diretrizes de anúncios.
 
 Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/qualidade-editorial.md` e `documentacao/agentes/pipeline-visual.md`.
 
-Leia obrigatoriamente `recursos/brand/brandbook.md`, `recursos/brand/design-system.md`, `recursos/brand/tokens.css` e `recursos/brand/briefing-visual.md`. Pare se ativos, direitos ou decisões visuais ainda estiverem pendentes.
+---
 
-## Brief bloqueante
+## 🛑 Regras Obrigatórias de Mídia Paga
 
-Confirme antes de produzir:
+1. **Uso Ativo de Referências de Anúncios:**
+   - Inspecione `recursos/referencias/` para extrair layouts de criativos que convertem (headlines magnéticas, caixas de contraste, mockups de produto/dashboard, selos de garantia ou autoridade).
+   - Passe as referências em `ImagePaths` no `generate_image`.
 
-- objetivo da campanha;
-- público e estágio de consciência;
-- oferta, preço/condições confirmados e destino;
-- problema, desejo, objeção e mecanismo;
-- provas utilizáveis;
-- CTA;
-- restrições legais, de marca e de plataforma;
-- hipótese que o criativo deve testar.
+2. **Composição em 3 Camadas de Conversão:**
+   - **Camada 1 (Gancho Visual Instantâneo):** Ponto focal de alto contraste que faz o usuário parar de rolar em menos de 1 segundo.
+   - **Camada 2 (Headline de Hipótese Clara):** Texto em destaque comunicando a dor, benefício ou oportunidade sem sensacionalismo enganoso.
+   - **Camada 3 (CTA e Prova):** Badge visual ou botão integrado (ex.: `Toque em Saiba Mais ↗` ou `Baixar Guia Gratuito`) + elemento de prova (logo, foto de autoridade, selo de método).
 
-## Estratégia do criativo
+3. **Variações de Hipóteses (Testes A/B):**
+   - Para um teste, crie de 2 a 3 variantes (`slide-01.png`, `slide-02.png`) testando diferentes ângulos (ex: Variante A: Foco na Dor; Variante B: Foco na Transformação; Variante C: Foco no Mecanismo/Método).
 
-Escolha uma hipótese principal por variante:
+---
 
-- dor ou custo de inação;
-- desejo e transformação;
-- mecanismo ou método;
-- demonstração/produto;
-- prova ou autoridade;
-- objeção;
-- contraste com alternativa;
-- oportunidade ou novidade real.
+## 🛠️ Passo a Passo de Execução
 
-## Segurança de mensagem
-
-- Não afirme atributos pessoais sensíveis do leitor.
-- Não use vergonha, ameaça, garantia, resultado irreal ou urgência falsa.
-- Não fabrique depoimentos, antes/depois, selos, notificações ou interface.
-- Registre termos obrigatórios e mantenha-os legíveis.
-
-## Produção visual
-
-Inspecione fotos, produtos, logos e referências. Gere com `generate_image` usando aspect ratio `3:4` e passe ativos como `ImagePaths`. Quando usar pessoa real, preserve identidade e autorização.
-
-Para um lote, mantenha convenção clara:
-
-`saidas/posts-de-anuncio/{slug}/slide-01.png`, `slide-02.png` etc., com a hipótese de cada variante registrada no manifesto.
-
-## Quality gates
-
-- proposta e público são compreensíveis rapidamente;
-- existe uma hipótese estratégica registrada;
-- visual interrompe o scroll sem sensacionalismo enganoso;
-- benefício está ligado a mecanismo ou prova;
-- CTA e destino correspondem;
-- texto, preço e condições estão corretos;
-- margens, contraste e `1080x1350` estão corretos;
-- checklist de política não tem bloqueio aberto.
-
-## Entrega
-
-Entregue conceito, hipótese, texto da arte, direção, legenda/apoio, público sugerido, variável testada e critério de leitura do resultado.
-
-Crie preview e manifesto com tipo `post-anuncio`; encaminhe para aprovação.
+1. **Definição da Hipótese e Oferta:**
+   - Registre público, objetivo, oferta, mecanismo e CTA de destino.
+2. **Geração com `generate_image`:**
+   - Use aspect ratio `3:4` (1080×1350).
+   - Passe referências e fotos em `ImagePaths`.
+   - Inclua selos, headline e CTA com hierarquia nítida.
+3. **Manifesto e Prévia:**
+   - Salve em `saidas/posts-de-anuncio/{slug}/slide-01.png` (e variantes).
+   - Crie `publicacao.json` com tipo `post-anuncio`.
+   - Gere a prévia com `npm run criar-previa` e atualize a vitrine.

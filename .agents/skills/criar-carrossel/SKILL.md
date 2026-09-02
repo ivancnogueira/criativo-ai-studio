@@ -1,81 +1,62 @@
 ---
 name: criar-carrossel
-description: Crie carrosséis premium de Instagram usando generate_image do Antigravity, fotos reais, logos, referências, design system, revisão visual, preview e aprovação.
+description: Crie carrosséis premium de Instagram usando generate_image do Antigravity, referências estéticas, fotos reais, logos, design system, revisão visual, preview e aprovação.
 ---
 
-# Criar Carrossel
+# Criar Carrossel (Produção Editorial Sequencial)
 
-Atue como diretora de arte e produtora de carrosséis. A entrega principal são PNGs finais `1080x1350`; HTML existe apenas para preview e vitrine.
+Atue como diretora de arte e designer editorial de carrosséis de alto engajamento. A entrega consiste em PNGs `1080x1350` (3:4) diagramados com narrativa envolvente e consistência visual rigorosa entre todos os slides.
 
-Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/qualidade-editorial.md` e `documentacao/agentes/pipeline-visual.md` antes de produzir.
+Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/qualidade-editorial.md` e `documentacao/agentes/pipeline-visual.md`.
 
-Leia obrigatoriamente `recursos/brand/brandbook.md`, `recursos/brand/design-system.md`, `recursos/brand/tokens.css` e `recursos/brand/briefing-visual.md` antes de escrever prompts ou gerar o primeiro slide. Se algum deles estiver genérico, incompleto ou pendente, interrompa a geração e peça ao usuário para completar.
+---
 
-## Entrada obrigatória
+## 🛑 Regras Obrigatórias de Produção
 
-- brief com objetivo, público, mensagem central e CTA;
-- copy aprovada ou autorização explícita para desenvolvê-la;
-- perfil e identidade visual utilizáveis;
-- fontes ou provas para afirmações factuais;
-- decisão sobre quantidade de slides.
+1. **Uso Ativo de Referências de Carrossel:**
+   - Inspecione sempre `recursos/referencias/` para extrair grids de carrossel, elementos de continuidade e diagramação de slides internos.
+   - Passe as referências em `ImagePaths` no `generate_image`.
 
-## Preflight visual
+2. **Hierarquia e Narrativa dos Slides:**
+   - **Slide 1 (Capa):** Padrão capa de revista de negócios com gancho visual irresistível, selo de categoria, headline dominante, foto integrada com iluminação de recorte e CTA de arraste `Arraste para o lado ➔`.
+   - **Slides Internos (2 a N-1):** Foco em 1 ideia central por slide, diagramação limpa em cards ou tópicos visuais, ícones geométricos minimalistas, marcadores numerados `01`, `02` elegantes e elementos de continuidade visual.
+   - **Slide Final (Fechamento):** Síntese da transformação, foto de perfil/autoridade, selo de marca `@usuario.marketing` e múltiplos CTAs visuais (Salvar 🔖, Compartilhar ✈️, Comentar 💬).
 
-Inspecione `recursos/fotos/`, `recursos/logos/` e `recursos/referencias/`. Para cada ativo candidato, confirme função e autorização.
+3. **Consistência Visual Invariante:**
+   - Repita o mesmo fundo, paleta de cores, tipografia, tratamento de iluminação e componentes gráficos em todos os prompts da sequência.
+   - Mantenha a numeração de slides consistente no topo ou rodapé (ex.: `01 / 05`, `02 / 05`...).
 
-O design system prevalece sobre referências. Extraia delas ritmo, hierarquia, densidade, enquadramento e clima; não copie composição de terceiros.
+4. **Textos Curtos e Legíveis:**
+   - Máximo de 15 a 25 palavras por slide interno.
+   - Não sobrecarregue os slides com parágrafos densos; detalhes estratégicos ficam na **legenda**.
 
-## Arquitetura narrativa
+---
 
-Escolha a sequência que melhor entrega a ideia:
+## 🛠️ Passo a Passo de Execução
 
-- diagnóstico: gancho -> sintoma -> causa -> solução -> aplicação -> CTA;
-- tutorial: promessa -> contexto -> passos -> resultado -> CTA;
-- lista: promessa -> itens progressivos -> síntese -> CTA;
-- comparação: tensão -> alternativa A -> alternativa B -> critérios -> conclusão;
-- história: cena -> conflito -> virada -> aprendizado -> aplicação -> CTA.
+1. **Estrutura da Narrativa:**
+   - Planeje a sequência de 3 a 7 slides antes de gerar: Capa -> Tensão/Diagnóstico -> Método/Passos -> Aplicação Prática -> Fechamento & CTA.
+2. **Escrever Prompts Sequenciais:**
+   - Escreva todos os prompts antes de iniciar a geração para fixar a coerência de estilo, luz e componentes.
+3. **Geração com `generate_image`:**
+   - Gere a Capa (`slide-01.png`) com aspect ratio `3:4` passando referências e fotos em `ImagePaths`.
+   - Valide a capa e gere sequencialmente `slide-02.png`, `slide-03.png`... mantendo o estilo visual.
+4. **Manifesto e Prévia:**
+   - Salve os slides em `saidas/carrosseis/{slug}/slide-01.png` até `slide-NN.png`.
+   - Crie o manifesto `publicacao.json` com `imagens` listando todos os slides na ordem.
+   - Execute `npm run criar-previa -- saidas/carrosseis/{slug}/publicacao.json`.
+   - Execute `npm run atualizar-vitrine`.
 
-Use de 2 a 10 slides conforme a narrativa.
+---
 
-## Direção visual
+## 🔍 Quality Gates por Slide
 
-Antes de gerar, defina:
+- A capa tem impacto visual imediato com hierarquia tipográfica clara?
+- Todos os slides pertencem claramente à mesma identidade visual e atmosfera?
+- A pessoa e os elementos estão perfeitamente integrados e iluminados?
+- O preview local permite folhear todos os slides suavemente no mobile/desktop?
 
-- conceito visual e metáfora;
-- paleta, contraste e textura;
-- tratamento fotográfico;
-- regra tipográfica e hierarquia;
-- componentes recorrentes;
-- alternância e continuidade entre slides;
-- uso de pessoa, produto, prova e logo.
-
-## Produção com generate_image
-
-1. Escreva todos os prompts antes de gerar para garantir consistência.
-2. Gere um slide piloto, normalmente capa ou slide representativo.
-3. Valide a direção; depois gere os demais um por vez.
-4. Repita invariantes de marca e sequência em todos os prompts.
-5. Passe fotos e referências como `ImagePaths` para consistência visual.
-6. Use aspect ratio `3:4` para formato 1080×1350.
-7. Exija texto curto e exato, sem palavras extras.
-8. Salve cada resultado aceito em `saidas/carrosseis/{slug}/slide-XX.png`.
-
-## Quality gates por slide
-
-- texto correto e legível no celular;
-- uma função narrativa clara;
-- rosto, mãos, objetos e produto coerentes;
-- margens seguras e nenhum corte crítico;
-- identidade visual consistente sem monotonia;
-- ausência de texto, logo ou marca d'água inventados;
-- promessa da capa entregue pelo conjunto;
-- CTA final coerente com o brief;
-- arquivo final exatamente `1080x1350`.
-
-Corrija apenas slides reprovados.
-
-## Preview, aprovação e saída
-
-Monte `publicacao.json`, gere `previas/{slug}.html` com os PNGs e execute `npm run atualizar-vitrine`. Mostre o preview e pergunte quais slides precisam de ajuste. Não publique nem crie aprovação definitiva antes da revisão visual.
-
-Com a versão pronta, execute `npm run aprovar:criar -- CAMINHO_PUBLICACAO`.
+Com a aprovação visual da sequência, crie o job:
+```powershell
+npm run aprovar:criar -- saidas/carrosseis/{slug}/publicacao.json
+```

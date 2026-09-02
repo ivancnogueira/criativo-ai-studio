@@ -1,124 +1,108 @@
-# Onboarding guiado
+# Onboarding Guiado — Criativo AI Studio
 
-Este roteiro é obrigatório durante a primeira configuração pelo Antigravity IDE. A instalação técnica e o onboarding estratégico são partes do mesmo percurso, mas têm conclusões diferentes.
+Este guia define o fluxo do onboarding no Criativo AI Studio. O processo é um funil progressivo de 6 marcos que transforma um repositório recém-instalado em uma máquina de produção de conteúdo ativo e integrado.
 
-## Experiência que o usuário deve receber
+---
 
-Antes da primeira pergunta, mostre o percurso completo:
+## 🗺️ Visão Geral dos 6 Marcos
 
-1. instalação técnica, ambiente e dependências;
-2. perfil: negócio, público, oferta, posicionamento, voz, objetivos e restrições;
-3. identidade visual: inventário de ativos, logo existente, referências, cores, tipografia e direção de arte aprovada;
-4. configurações: Meta, `.env`, GitHub Pages e integrações opcionais;
-5. primeiro post: pilares, briefing, copy, imagem, preview e aprovação visual;
-6. postagem: job auditável, confirmação no chat e primeira publicação.
+1. **Instalação** — Dependências, ambiente Node.js 20+, criação do `.env` local e diretórios.
+2. **Perfil da Marca** — Negócio, público, oferta, mecanismo, voz e limites.
+3. **Identidade Visual** — Fotos, logo, referências, cores, fontes, brandbook e direção da 1ª peça.
+4. **Configurações** — Meta API, GitHub Pages e validação de conexões reais.
+5. **Primeiro Post e Preview** — Briefing, copy, arte editorial via `generate_image`, preview mobile e vitrine.
+6. **Postagem Oficial** — Upload para Pages, dry-run, job auditável, aprovação no chat e publicação.
 
-Use o cabeçalho `Onboarding — etapa N de 6: NOME` em cada interação. Diga em uma frase o que será decidido naquela etapa e o que acontecerá depois da resposta.
+---
 
-Faça perguntas em blocos curtos. Não repita o que já estiver nos arquivos ou tiver sido respondido. Quando houver informação suficiente para propor uma direção profissional, apresente a proposta e peça correção ou confirmação, em vez de transferir toda a elaboração ao usuário.
+## Marco 1 — Instalação
 
-Não termine uma interação com "quer ir para o próximo passo?", "podemos continuar?" ou outra pergunta sem destino explícito. Quando uma resposta for indispensável, encerre assim:
+- Verifique se Node.js 20+ e Git estão disponíveis.
+- Garanta que as dependências estejam instaladas (`npm install`).
+- Garanta que o `.env` exista com os padrões de execução local:
+  ```text
+  APP_MODE=local
+  PREVIEW_HOST=127.0.0.1
+  PREVIEW_PORT=4173
+  ```
+- Garanta a existência das pastas `conteudos/`, `documentacao/`, `recursos/fotos/`, `recursos/logos/`, `recursos/referencias/`, `saidas/`, `previas/`, `runtime/` e `logs/`.
+- Mostre a tabela dos 6 marcos e avance para o Marco 2.
 
-> Depois da sua resposta, vou salvar esta etapa e avançar para **NOME DA PRÓXIMA ETAPA**, onde faremos **RESULTADO CONCRETO**.
+---
 
-## Execução pelo Antigravity IDE
+## Marco 2 — Perfil da Marca
 
-O agente mantém o contexto e usa as skills conforme necessidade. O fluxo não é encerrado entre uma skill e outra:
+Colete em blocos curtos, sem repetições cansativas:
+- **Bloco 1 (Negócio):** Nome, especialidade/nicho e localização ou formato de atuação.
+- **Bloco 2 (Público & Dores):** Quem é o cliente ideal, suas dores e aspirações.
+- **Bloco 3 (Oferta & Diferencial):** O que é vendido, mecanismo único e provas/casos.
+- **Bloco 4 (Voz & Regras):** Tom de voz, vocabulário característico e restrições.
 
-- perfil e diagnóstico: conversa direta no chat, salvando em `conteudos/perfil-da-marca.md`;
-- identidade visual: inventário guiado dos ativos que a pessoa já tem ou vai inserir nas pastas do projeto;
-- configurações: skill `configurar-instagram`, antes de produzir a primeira peça; conduz Meta, `.env`, GitHub Pages, sem receber segredos no chat;
-- pilares, pauta e primeiro brief: skill `planejar-conteudo`, dentro da etapa 5;
-- primeira proposta textual: skill `copywriter-instagram`, depois de pilares e briefing coerentes;
-- primeira arte: `generate_image` do Antigravity, seguindo pipeline de `documentacao/agentes/pipeline-visual.md`;
-- preview: `npm run criar-previa` com os PNGs gerados;
-- postagem: skill `configurar-instagram`, depois de o job exato ser aprovado no chat.
+Salve no formato estruturado em `conteudos/perfil-da-marca.md` e avance para o Marco 3.
 
-O agente deve atualizar `conteudos/estado-do-studio.yml` depois de cada marco. Todo turno de onboarding precisa informar:
+---
 
-- etapa atual e progresso;
-- o que já foi registrado;
-- o que está sendo perguntado agora;
-- a próxima etapa concreta.
+## Marco 3 — Identidade Visual
 
-## Etapa 3 — Identidade Visual
+1. **Inventário de Ativos:**
+   - Peça ao usuário para colocar suas fotos em `recursos/fotos/`, logo/favicon em `recursos/logos/` e referências estéticas em `recursos/referencias/` (ou informar se usará sem fotos/logo provisoriamente).
+2. **Cores e Tipografia:**
+   - Extraia ou colete a paleta (fundo, texto, primária de destaque, acento) e fontes de título e leitura.
+3. **Direção de Arte da 1ª Peça (Editorial Premium):**
+   - Escolha o território visual (ex: Revista de Negócios / Bloomberg Style, Editorial Tech, Brutalismo Elegante).
+   - Defina o selo, headline, subtítulo e CTA visual.
+4. **Sincronização das 5 Camadas:**
+   - Atualize `brandbook.md`, `design-system.md`, `tokens.css`, `briefing-visual.md` e `identidade-visual.yml`.
+   - Peça aprovação da direção visual e avance para o Marco 4.
 
-Ativos ausentes não devem interromper a definição estratégica, mas bloqueiam a geração até que a ausência seja uma decisão explícita. A etapa 3 deve ser guiada em bloco curto, sem pedir criação de marca dentro do onboarding. Obtenha e registre obrigatoriamente:
+---
 
-- identidade visual existente: se já tiver, peça para inserir logo em `recursos/logos/`, fotos em `recursos/fotos/` e referências em `recursos/referencias/`; se ainda não tiver, pergunte se prefere pausar para criar/inserir agora ou pular a etapa visual completa e usar posts sem fotos/logo por enquanto;
-- cores: pergunte se deve extrair da logo fornecida ou se a pessoa prefere preencher códigos, por exemplo `primaria #123456`, `texto #111111`, `fundo #f7f3ea`, `destaque #00a99d`;
-- tipografia: pergunte se deve inferir a partir da identidade fornecida ou se a pessoa prefere preencher nomes, por exemplo `titulo: Playfair Display`, `texto: DM Sans`, `apoio: Inter`;
-- fotos de pessoa, produto ou ambiente em `recursos/fotos/`, ou a decisão explícita `não usar pessoa nesta primeira peça`;
-- logo em `recursos/logos/`, ou a decisão explícita `sem logo nesta primeira peça`;
-- duas a cinco referências em `recursos/referencias/`, ou a decisão explícita de buscar referências depois. Se a pessoa não tiver referências, sugira buscas no Pinterest com termos derivados do perfil, do nicho, do público, da promessa da oferta e dos concorrentes diretos;
-- confirmação de direitos de uso dos ativos;
-- conceito, ponto focal, estrutura, componentes, texto visual, CTA visual e selo editorial da primeira arte.
+## Marco 4 — Configurações
 
-Em seguida, mostre a direção proposta e peça aprovação explícita antes de marcar a etapa 3 como validada.
+1. Oriente a criação e configuração do aplicativo na Meta (Instagram Graph API) e do repositório público no GitHub Pages.
+2. Peça ao usuário para preencher o `.env` local diretamente com suas credenciais.
+3. Execute `npm run validar:integracoes` para validar a conexão real com a Meta e o GitHub Pages.
+4. Com a conexão validada, avance para o Marco 5.
 
-## Etapa 5 — Primeiro Post
+---
 
-O primeiro conteúdo é sempre um **post individual 1080×1350**. Esse formato reduz dependências e permite validar todo o sistema.
+## Marco 5 — Primeiro Post e Preview
 
-Use `generate_image` do Antigravity com aspect ratio `3:4` e passe fotos e referências como `ImagePaths`. Se o agente não tiver acesso ao `generate_image`, informe a limitação ao usuário.
+1. **Briefing e Copy:** Crie a copy persuasiva (gancho, desenvolvimento, CTA e legenda completa).
+2. **Produção Visual de Revista:**
+   - Inspecione `recursos/referencias/` e `recursos/fotos/`.
+   - Invoque `generate_image` passando a referência estética e a foto em `ImagePaths`.
+   - Garanta a hierarquia em 4 níveis (Selo no topo, Título 800+, Subtítulo e Rodapé com `@usuario` e CTA).
+3. **Prévia e Vitrine:**
+   - Salve a imagem em `saidas/posts-individuais/{slug}/slide-01.png`.
+   - Crie `publicacao.json`.
+   - Gere a prévia com `npm run criar-previa -- saidas/posts-individuais/{slug}/publicacao.json`.
+   - Atualize a vitrine com `npm run atualizar-vitrine`.
+   - Apresente o link do preview local ou abra a página para revisão visual.
+   - Aplique ajustes caso solicitados. Com a arte aprovada visualmente, avance para o Marco 6.
 
-Mostre o preview, aplique ajustes e obtenha aprovação explícita da versão. A aprovação visual não autoriza publicação.
+---
 
-## Etapa 6 — Publicação
+## Marco 6 — Postagem Oficial
 
-Depois da aprovação visual, obtenha autorização específica para upload público e envie PNG, preview HTML e vitrine ao GitHub Pages. Execute `npm run pages:validar` e só entregue o link quando o HTTPS responder.
-
-Gere o job, mostre o ID, resuma a versão imutável e peça ao usuário que responda exatamente `APROVAR ID-DO-JOB`. Ao receber essa confirmação no chat, registre a aprovação local auditável e publique pela API oficial.
-
-## Critério de conclusão
-
-### Instalação técnica concluída
-
-Node, dependências, modo, `.env` e diretórios foram verificados, mas ainda existe etapa estratégica pendente. Informe a pendência e continue.
-
-### Onboarding pausado
-
-O usuário pediu para parar ou falta uma resposta/ativo indispensável. Informe a etapa, a pergunta pendente e como retomar.
-
-### Studio instalado e configurado
-
-Somente quando:
-
-- perfil, inventário de ativos, identidade visual e direção visual foram preenchidos e aprovados;
-- três a cinco pilares foram apresentados e confirmados;
-- existe uma primeira pauta e um briefing com objetivo, público, mensagem, formato, CTA e fontes;
-- a copy e a arte do primeiro post passaram pelos quality gates;
-- o PNG final e o manifesto foram salvos em `saidas/` e o preview foi gerado em `previas/`;
-- o usuário confirmou que a estratégia representa o negócio e aprovou visualmente a primeira peça;
-- Meta foi configurada localmente sem expor credenciais;
-- a imagem possui URL HTTPS acessível pela Meta;
-- um job único foi aprovado no chat pela confirmação exata `APROVAR ID-DO-JOB`;
-- a publicação real retornou `mediaId` e permalink registrados na auditoria;
-- testes e diagnóstico foram executados.
-
-## Estado persistente
-
-Use este formato em `conteudos/estado-do-studio.yml` e preserve campos já preenchidos:
-
-```yaml
-versao: 2
-onboarding:
-  status: nao_iniciado
-  etapa_atual: ambiente
-  perfil: pendente
-  ativos_visuais: pendente
-  identidade_visual: pendente
-  direcao_visual: pendente
-  pilares: pendente
-  primeiro_briefing: pendente
-  primeiro_post: pendente
-  validacao_usuario: pendente
-  integracao_instagram: pendente
-  integracao_telegram: opcional
-  primeira_publicacao: pendente
-producao:
-  ultimo_briefing:
-  proximo_passo: escolher_modo
-```
-
-Valores de etapa: `pendente`, `preenchido`, `validado`, `aprovado`, `configurado` ou `publicado`. Estado geral: `nao_iniciado`, `em_andamento`, `pronto` ou `revisao`.
+1. **Upload para o GitHub Pages:** Execute `npm run pages:publicar -- saidas/posts-individuais/{slug}/publicacao.json`.
+2. **Validação:** Execute `npm run pages:validar -- saidas/posts-individuais/{slug}/publicacao.json`.
+3. **Dry-Run e Criação do Job:**
+   - Execute o dry-run com `npm run publicar-instagram -- saidas/posts-individuais/{slug}/publicacao.json`.
+   - Crie o job com `npm run aprovar:criar -- saidas/posts-individuais/{slug}/publicacao.json`.
+4. **Aprovação Auditável:**
+   - Mostre o ID do job (ex.: `POST-001`) e solicite no chat a resposta exata `APROVAR POST-001`.
+   - Após a resposta do usuário, execute:
+     ```powershell
+     npm run aprovar:local -- POST-001 "APROVAR POST-001"
+     ```
+5. **Publicação Oficial:**
+   - Dispare a publicação oficial via Meta API:
+     ```powershell
+     npm run publicar-instagram:aprovado -- saidas/posts-individuais/{slug}/publicacao.json runtime/fila/POST-001.json
+     ```
+   - Registre o `mediaId` e o `permalink` retornado pelo Instagram.
+6. **Finalização:**
+   - Atualize `conteudos/estado-do-studio.yml` para `status: pronto`.
+   - Execute `npm test` e `npm run diagnosticar`.
+   - Apresente o resumo final e encerre o onboarding comemorando o primeiro post publicado!

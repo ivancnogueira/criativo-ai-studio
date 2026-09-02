@@ -21,7 +21,7 @@ const seguroJson = (dados) =>
     .replace(/&/g, '\\u0026');
 
 const avatarDataUri = (iniciais) => {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="48" fill="#e6edf0"/><text x="48" y="56" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#172126">${escapar(iniciais)}</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="48" fill="#1e293b"/><text x="48" y="56" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#f8fafc">${escapar(iniciais)}</text></svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 };
 
@@ -48,11 +48,19 @@ export function gerarHtml(dados) {
   const iniciais = usuario.replace(/[^\p{L}\p{N}]/gu, '').slice(0, 2).toUpperCase() || 'CS';
   const rawSlides = dados.slides || dados.imagens;
   const slides = rawSlides.map((slide) => (typeof slide === 'string' ? { src: slide } : slide));
+
+  const slidesHtml = slides.map((slide) => {
+    const src = typeof slide === 'string' ? slide : slide.src;
+    return (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('../') || src.startsWith('data:'))
+      ? src
+      : `../${src}`;
+  });
+
   const normalizado = {
-    slides,
+    slides: slidesHtml.map((s) => ({ src: s })),
     legenda: String(dados.legenda || '').replace(/\\n/g, '\n'),
-    curtidas: dados.curtidas || '',
-    horario: dados.horario || 'Agora'
+    curtidas: dados.curtidas || '1.842 curtidas',
+    horario: dados.horario || 'Há 2 horas'
   };
   const avatar = perfil.avatar || avatarDataUri(iniciais);
 
@@ -63,11 +71,11 @@ export function gerarHtml(dados) {
     .replace('{{AVATAR}}', perfil.avatar ? `<img src="${escapar(perfil.avatar)}" alt="Avatar de ${escapar(usuario)}">` : escapar(iniciais))
     .replaceAll('{{AVATAR_PATH}}', escapar(avatar))
     .replaceAll('{{AVATAR_ALT}}', escapar(`Avatar de ${usuario}`))
-    .replaceAll('{{VERIFIED_CLASS}}', perfil.verificado ? '' : 'hidden')
+    .replaceAll('{{VERIFIED_CLASS}}', perfil.verificado !== false ? '' : 'hidden')
     .replaceAll('{{LIKES}}', escapar(normalizado.curtidas))
     .replaceAll('{{CAPTION}}', escapar(normalizado.legenda))
     .replaceAll('{{TIME_LABEL}}', escapar(normalizado.horario))
-    .replaceAll('{{SLIDES_JSON}}', seguroJson(slides.map((slide) => slide.src)))
+    .replaceAll('{{SLIDES_JSON}}', seguroJson(slidesHtml))
     .replace('{{PREVIEW_DATA}}', seguroJson(normalizado));
 }
 
@@ -84,23 +92,34 @@ async function main() {
   ]);
 
   const campos = Object.fromEntries(
-    [...identidade.matchAll(/^\s{2}(usuario|avatar|verificado|curtidas|horario):\s*(.*)$/gm)].map((m) => [m[1], m[2].trim()])
+    [...identidade.matchAll(/^\s*(usuario|avatar|verificado|curtidas|horario):\s*['"]?(.*?)['"]?\s*$/gm)].map((m) => [m[1], m[2].trim()])
   );
+
+  let avatar = campos.avatar || '';
+  if (avatar && !avatar.startsWith('data:') && !avatar.startsWith('http')) {
+    try {
+      const buf = await readFile(resolve(raiz, avatar));
+      const ext = avatar.endsWith('.png') ? 'image/png' : avatar.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg';
+      avatar = `data:${ext};base64,${buf.toString('base64')}`;
+    } catch {
+      // fallback
+    }
+  }
 
   dados.perfil = {
     usuario: campos.usuario || 'seu_perfil',
-    avatar: campos.avatar || '',
-    verificado: campos.verificado === 'true',
+    avatar: avatar || '',
+    verificado: campos.verificado === 'true' || campos.verificado === true || true,
     ...dados.perfil
   };
-  dados.curtidas ??= campos.curtidas || '';
-  dados.horario ??= campos.horario || 'Agora';
+  dados.curtidas ??= campos.curtidas || '1.842 curtidas';
+  dados.horario ??= campos.horario || 'Há 2 horas';
   dados.template = template;
 
   const destino = join(raiz, 'previas', `${dados.slug}.html`);
   await mkdir(dirname(destino), { recursive: true });
   await writeFile(destino, gerarHtml(dados), 'utf8');
-  console.log(`Prévia criada: previas/${dados.slug}.html`);
+  console.log(`Prévia criada com sucesso: previas/${dados.slug}.html`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

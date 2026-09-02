@@ -1,111 +1,83 @@
-# Instruções para o Antigravity IDE
+# Instruções para o Antigravity IDE — Criativo AI Studio
 
-Este repositório é uma ferramenta local e genérica de produção de conteúdo premium para Instagram. Personalize o sistema somente com os dados e ativos fornecidos pelo usuário desta instalação.
+Este repositório é uma fundação local e profissional de produção de conteúdo premium para Instagram. Personalize o sistema exclusivamente com os dados e ativos fornecidos pelo usuário desta instalação.
 
-## Antes de trabalhar
+---
 
-1. Leia `README.md` e, em instalações novas, `INSTALAR.md`.
-2. Consulte os arquivos existentes em `conteudos/` antes de criar ou alterar conteúdo.
-3. Preserve configurações e respostas já preenchidas; não substitua conteúdo do usuário sem autorização.
-4. Use somente fotos, logos e referências que o usuário tenha fornecido ou autorizado.
-5. Leia as skills em `.agents/skills/` para entender os fluxos disponíveis.
+## 🧭 Princípios de Excelência Visual e Operacional
 
-## Onboarding
+1. **Produção Visual de Revista (Anti-Genérico):**
+   - **NUNCA** gere imagens planas, genéricas ou com texto de tamanho único jogado no meio.
+   - O padrão visual deve parecer uma capa de revista de negócios internacional (ex.: Bloomberg Businessweek, Wired, Fast Company, Forbes).
+   - **SEMPRE** inspecione `recursos/referencias/` e passe as referências estéticas e a foto do usuário em `ImagePaths` no `generate_image`.
+   - Toda arte deve ter 4 níveis de hierarquia tipográfica: 1) Selo/Badge no topo, 2) Headline dominante em peso 800+, 3) Subtítulo curto de apoio, 4) Rodapé com assinatura `@usuario` e CTA visual.
+   - Textos na imagem devem ser estritamente curtos (8 a 15 palavras) e 100% corretos em português com acentuação. O aprofundamento vai na legenda.
 
-Quando o usuário pedir para instalar, configurar ou iniciar o projeto:
+2. **Preservação e Não Repetição:**
+   - Leia `README.md`, `INSTALAR-COM-ANTIGRAVITY.md` e `conteudos/` antes de agir.
+   - Preserve respostas já preenchidas; nunca apague ou sobrescreva dados sem autorização.
 
-Leia e siga integralmente `documentacao/onboarding-guiado.md`. Trate a instalação como um único processo: mostre os seis marcos antes da primeira pergunta, exiba o progresso em cada interação e continue automaticamente para a etapa segura seguinte. Não encerre com "quer continuar?" nem com um próximo passo sem nome, resultado e responsável.
+3. **Segurança de Credenciais:**
+   - Tokens e segredos ficam **exclusivamente** no `.env` local. Nunca solicite, exiba ou comente valores de tokens no chat.
 
-### Os seis marcos
+---
 
-1. **Instalação** — verificar Node.js 20+, dependências e ambiente.
-2. **Perfil** — coletar negócio, público, oferta, posicionamento, voz, objetivos e restrições em blocos curtos.
-3. **Identidade Visual** — inventário de fotos, logo, referências e direitos; cores; fontes; referências; direção de arte da primeira peça; aprovação.
-4. **Configurações** — Meta API, GitHub Pages; executar `npm run validar:integracoes`.
-5. **Primeiro Post** — briefing, copy, arte premium via `generate_image`, preview e ajustes.
-6. **Postagem** — dry-run, job de aprovação, confirmação `APROVAR ID-DO-JOB`, publicação.
+## 🗺️ Onboarding Guiado (6 Marcos Contínuos)
 
-Atualize `conteudos/estado-do-studio.yml` após cada marco. Só declare o Studio instalado quando a primeira publicação real estiver registrada.
+Quando o usuário iniciar ou pedir para conduzir o onboarding, siga `documentacao/onboarding-guiado.md` como um processo contínuo e fluido:
 
-## Roteamento de skills
+1. **Marco 1 — Instalação:** Verificar Node.js 20+, dependências, `.env` criado automaticamente com modo local e integridade de diretórios.
+2. **Marco 2 — Perfil:** Coletar negócio, público, oferta, posicionamento, voz, objetivos e restrições em blocos curtos, salvando em `conteudos/perfil-da-marca.md`.
+3. **Marco 3 — Identidade Visual:**
+   - Inventário em `recursos/fotos/`, `recursos/logos/` e `recursos/referencias/`.
+   - Cores, fontes e território visual.
+   - Sincronizar `brandbook.md`, `design-system.md`, `tokens.css`, `briefing-visual.md` e `identidade-visual.yml`.
+   - Exigir aprovação explícita da direção de arte antes de produzir.
+4. **Marco 4 — Configurações:**
+   - Orientar criação do app Meta e do repositório público no GitHub Pages, com preenchimento exclusivo no `.env` local.
+   - Executar `npm run validar:integracoes` para testar a conexão real.
+5. **Marco 5 — Primeiro Post e Preview:**
+   - Criar briefing e copy persuasiva.
+   - Gerar arte editorial premium 1080×1350 com `generate_image` passando referências em `ImagePaths`.
+   - Gerar preview com `npm run criar-previa` e vitrine com `npm run atualizar-vitrine`.
+   - Apresentar o link da prévia mobile para revisão visual do usuário.
+6. **Marco 6 — Postagem Oficial:**
+   - Enviar arte e preview ao GitHub Pages (`npm run pages:publicar`).
+   - Fazer dry-run e criar o job de aprovação auditável (`npm run aprovar:criar`).
+   - Solicitar a confirmação exata `APROVAR ID-DO-JOB` no chat.
+   - Após a resposta, aprovar localmente (`npm run aprovar:local`) e publicar oficialmente via Meta Graph API (`npm run publicar-instagram:aprovado`).
+   - Atualizar `conteudos/estado-do-studio.yml` para `pronto` com `mediaId` e permalink registrados.
+   - Executar `npm test` e `npm run diagnosticar`.
 
-Use a skill adequada à tarefa. O Antigravity IDE lê automaticamente as skills em `.agents/skills/`:
+---
 
-- estratégia, calendário ou ideias → `planejar-conteudo`
-- texto, gancho, legenda ou revisão verbal → `copywriter-instagram`
-- sequência de slides → `criar-carrossel`
-- arte única orgânica → `criar-post-individual`
-- criativo de mídia paga → `criar-post-anuncio`
-- stories para Instagram → `gerar-stories`
-- criar ou redesenhar identidade, logo ou brandbook → `criar-identidade-visual`
-- credenciais, diagnóstico Meta ou publicação → `configurar-instagram`
-- análise de performance de posts → `analise-metricas`
+## 🎛️ Roteamento de Skills (`.agents/skills/`)
 
-Uma solicitação pode atravessar skills em sequência. Registre o handoff; não faça todas repetirem o briefing.
+- `planejar-conteudo` — Estratégia editorial, pilares, pautas e briefs estruturados.
+- `copywriter-instagram` — Redação de headlines de impacto, legendas persuasivas e CTAs.
+- `criar-post-individual` — Peças orgânicas de imagem única com diagramação editorial premium (1080×1350).
+- `criar-carrossel` — Sequências narrativas de múltiplos slides com capas de alto impacto (1080×1350).
+- `criar-post-anuncio` — Criativos de tráfego pago focados em hipóteses e conversão (1080×1350).
+- `gerar-stories` — Conteúdos verticais dinâmicos respeitando zonas seguras (1080×1920).
+- `criar-identidade-visual` — Brandbook, design system e tokens de marca.
+- `configurar-instagram` — Integração com Meta API, GitHub Pages e fluxo de aprovação.
+- `analise-metricas` — Diagnóstico de performance de posts e otimizações orientadas a dados.
 
-## Geração de imagens
+---
 
-O Criativo AI Studio usa exclusivamente `generate_image` do Antigravity IDE para gerar artes. Não use SVG, HTML ou canvas como ferramenta de geração de arte — esses formatos servem apenas para preview.
+## 📐 Formatos e Resoluções Padrão
 
-### Pipeline visual
+| Formato | Dimensão | Aspect Ratio no `generate_image` |
+|---------|----------|----------------------------------|
+| Post Individual | 1080×1350 | `3:4` |
+| Carrossel (cada slide) | 1080×1350 | `3:4` |
+| Anúncio no Feed | 1080×1350 | `3:4` |
+| Stories | 1080×1920 | `9:16` |
 
-1. Ler as 5 camadas de identidade em `recursos/brand/` e `conteudos/identidade-visual.yml`.
-2. Inspecionar `recursos/fotos/`, `recursos/logos/` e `recursos/referencias/`.
-3. Definir direção visual antes de gerar.
-4. Escrever prompts detalhados com invariantes de marca.
-5. Usar `generate_image` com aspect ratio `3:4` (feed) ou `9:16` (stories).
-6. Passar fotos e referências como `ImagePaths` para consistência visual.
-7. Salvar resultados em `saidas/` no diretório correto por tipo.
+---
 
-Leia `documentacao/agentes/pipeline-visual.md` para o pipeline completo.
+## 🔒 Regras de Qualidade e Bloqueios
 
-### Formatos
-
-| Formato | Dimensão | Aspect Ratio |
-|---------|----------|-------------|
-| Post Individual | 1080×1350 | 3:4 |
-| Carrossel | 1080×1350 | 3:4 |
-| Anúncio | 1080×1350 | 3:4 |
-| Stories | 1080×1920 | 9:16 |
-
-## Arquivos de trabalho
-
-- `conteudos/` — perfil, identidade visual, pilares, ideias e campanhas.
-- `recursos/brand/` — design system e tokens visuais aprovados.
-- `recursos/` — fotos, logos e referências do próprio usuário.
-- `saidas/` — imagens e manifestos gerados.
-- `previas/` — páginas HTML locais para revisão.
-- `runtime/` e `logs/` — estado e auditoria locais, nunca versionados.
-
-## Segurança e publicação
-
-- Credenciais ficam exclusivamente no `.env` local e nunca devem aparecer em respostas, logs ou commits.
-- A publicação exige identificador único, remetente autorizado, aprovação explícita e registro de auditoria.
-- Não considere respostas vagas como aprovação.
-- Use apenas a API oficial da Meta para Instagram e, quando a extensão opcional estiver ativa, o bot do Telegram configurado pelo usuário.
-- Antes de uma ação externa, confirme que o usuário pediu a ação e que o job correto está aprovado.
-
-## Identidade visual
-
-As cinco camadas de identidade devem estar sincronizadas:
-
-1. `recursos/brand/brandbook.md` — fundamento, território e regras
-2. `recursos/brand/design-system.md` — decisões executáveis
-3. `recursos/brand/tokens.css` — valores exatos
-4. `conteudos/identidade-visual.yml` — configuração estruturada
-5. `recursos/brand/briefing-visual.md` — direção da primeira peça
-
-Não gere arte enquanto algum desses arquivos tiver `A definir` ou `pendente` em decisões essenciais.
-
-## Quality gates
-
-O onboarding só fica `pronto` quando:
-
-- público, oferta, transformação, voz e restrições não estão genéricos
-- inventário de fotos, logo, referências e direitos de uso está decidido e registrado
-- identidade visual e direção da primeira arte estão explicitamente aprovadas
-- existem de três a cinco pilares distintos
-- primeiro briefing tem objetivo, público, mensagem, formato, CTA e fontes
-- primeiro post tem PNG final, manifesto e preview revisados
-- o post individual foi aprovado em job auditável e publicado pela Meta
-- o ID e o permalink retornados foram registrados sem expor credenciais
+- Não avance para a geração de arte enquanto a identidade ou direção visual contiverem itens pendentes.
+- Não publique posts sem validação prévia no preview mobile e confirmação exata do comando de aprovação.
+- Trate qualquer inconsistência de ortografia ou imagem chapada regenerando a peça com prompt mais detalhado e referências em `ImagePaths`.

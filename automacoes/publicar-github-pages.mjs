@@ -25,10 +25,123 @@ function gerarVitrinePublica(publicacoes) {
   const cards = publicacoes
     .map(
       (item) =>
-        `<article><img src="${escapar(item.imagem)}" alt="Capa"><div><span>${escapar(item.status)}</span><h2>${escapar(item.titulo)}</h2><a href="${escapar(item.preview)}">Abrir prévia</a></div></article>`
+        `<article>
+          <img src="${escapar(item.imagem)}" alt="Capa">
+          <div class="card-body">
+            <span class="status">${escapar(item.status || 'Publicação')}</span>
+            <h2>${escapar(item.titulo)}</h2>
+            <a href="${escapar(item.preview)}">Visualizar Prévia →</a>
+          </div>
+        </article>`
     )
     .join('\n');
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Prévias</title><style>body{margin:0;background:#eef1f3;font:16px system-ui;color:#182124}.shell{max-width:1120px;margin:auto;padding:32px 16px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}article{overflow:hidden;background:#fff;border-radius:12px;box-shadow:0 10px 28px #0001}img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#ddd}article div{padding:16px}span{font-size:12px;text-transform:uppercase;color:#566}a{color:#075e62;font-weight:700}</style></head><body><main class="shell"><h1>Vitrine de prévias</h1><section class="grid">${cards}</section></main></body></html>`;
+
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Vitrine de Prévias — Criativo AI Studio</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card-bg: #ffffff;
+      --text: #1a202c;
+      --muted: #718096;
+      --primary: #2a9d8f;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .shell {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    header {
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    p.subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    article {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    article:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      background: #e2e8f0;
+    }
+    .card-body {
+      padding: 16px;
+    }
+    .status {
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 6px 0 12px;
+      line-height: 1.3;
+    }
+    a {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <h1>Vitrine de Prévias</h1>
+      <p class="subtitle">Criativo AI Studio — Galeria de publicações</p>
+    </header>
+    <section class="grid">
+      ${cards || '<p>Nenhuma prévia disponível.</p>'}
+    </section>
+  </main>
+</body>
+</html>`;
 }
 
 async function requisitar(fetchFn, url, token, opcoes = {}, aceitar404 = false) {
@@ -110,7 +223,7 @@ export async function publicarNoGitHubPages({ caminhoManifesto, diretorioRaiz = 
   const entradaPublica = {
     slug: publicacao.slug,
     titulo: publicacao.titulo || publicacao.slug,
-    status: publicacao.status || 'em revisão',
+    status: publicacao.status || 'Publicado',
     imagem: caminhoUrl(relativoImagem),
     preview: `previas/${encodeURIComponent(publicacao.slug)}.html`
   };

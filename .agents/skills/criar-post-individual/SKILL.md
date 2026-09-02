@@ -1,56 +1,75 @@
 ---
 name: criar-post-individual
-description: Crie posts individuais premium para Instagram como PNG final usando generate_image do Antigravity, fotos, logos, referências, identidade visual, preview e aprovação.
+description: Crie posts individuais premium para Instagram com acabamento editorial de revista usando generate_image do Antigravity, fotos reais, logos, referências estéticas, preview mobile e aprovação.
 ---
 
-# Criar Post Individual
+# Criar Post Individual (Produção Editorial Premium)
 
-Atue como diretora de arte de peças orgânicas de imagem única. O post precisa comunicar uma ideia forte sem depender de um carrossel para ser compreendido.
+Atue como diretora de arte e designer editorial sênior de publicações de alto impacto. O objetivo é produzir uma peça visual que pareça uma capa de revista de negócios internacional (estilo Bloomberg, Wired, Fast Company) — rica em detalhes, iluminação e composição.
 
 Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/qualidade-editorial.md` e `documentacao/agentes/pipeline-visual.md`.
 
-Leia obrigatoriamente `recursos/brand/brandbook.md`, `recursos/brand/design-system.md`, `recursos/brand/tokens.css` e `recursos/brand/briefing-visual.md` antes da direção de arte. Não gere enquanto decisões essenciais estiverem `A definir` ou `pendente`.
+---
 
-## Diagnóstico
+## 🛑 Regras Obrigatórias de Produção
 
-Confirme objetivo, público, mensagem em uma frase, papel da legenda, CTA, destino, contexto de publicação e prova necessária. Escolha a função principal: opinião, autoridade, educação, prova, convite, anúncio editorial ou relacionamento.
+1. **Uso Ativo de Referências:**
+   - Inspecione sempre `recursos/referencias/` antes de escrever o prompt.
+   - Passe até 2 referências estéticas de layout + a foto do usuário em `ImagePaths` no `generate_image`.
+   - Replique ou combine o layout, enquadramento, peso tipográfico e tratamento de luz das melhores referências.
 
-Se houver mais de uma ideia central, recomende carrossel. Se o objetivo for mídia paga, encaminhe para `criar-post-anuncio`.
+2. **Hierarquia Tipográfica de 4 Níveis:**
+   - **Nível 1 (Selo/Badge no Topo):** Caixa alta com espaçamento entre letras em moldura fina. Ex: `[ ESTRATÉGIA DE IA ]`.
+   - **Nível 2 (Headline Principal):** Título curto em peso pesado (Bold 800+), alto contraste e quebra inteligente.
+   - **Nível 3 (Subtítulo/Apoio):** 1 frase concisa em peso regular ou itálico.
+   - **Nível 4 (Rodapé com Assinatura e CTA):** `@usuario.marketing` + selo visual `Leia a legenda ↗` ou `Salvar 🔖`.
 
-## Preflight e direção
+3. **Integração Fotográfica Profissional:**
+   - A pessoa ou produto NÃO deve ficar chapada como adesivo.
+   - Aplique luz direcional de estúdio, luz de contorno (rim light) nas bordas com a cor de destaque da marca e sombras de contato realistas.
+   - Fundo com profundidade (gradientes dark mode, texturas sutis de estúdio, iluminação volumétrica).
 
-Inspecione fotos, logos e referências autorizadas. Defina:
+4. **Ortografia e Textos Curtos:**
+   - Mantenha textos curtos na arte (máximo 8 a 15 palavras) para garantir ortografia impecável em português.
+   - Todo o aprofundamento, método e narrativa devem estar na **legenda**.
 
-- ponto focal;
-- hierarquia entre imagem, headline e apoio;
-- composição, contraste, espaço negativo e margens;
-- papel da pessoa ou produto;
-- relação entre arte e legenda;
-- território visual único.
+---
 
-## Produção
+## 🛠️ Passo a Passo de Execução
 
-1. Confirme a copy curta da arte.
-2. Crie de duas a três direções conceituais quando a escolha for relevante.
-3. Selecione uma direção antes de gerar variações.
-4. Gere com `generate_image` usando aspect ratio `3:4` (1080×1350).
-5. Passe fotos e referências como `ImagePaths` para consistência visual.
-6. Inclua texto exato no prompt entre aspas.
-7. Salve em `saidas/posts-individuais/{slug}/slide-01.png`.
+### 1. Preflight e Ativos
+- Leia o perfil da marca em `conteudos/perfil-da-marca.md` e a identidade em `conteudos/identidade-visual.yml`.
+- Liste os arquivos em `recursos/fotos/`, `recursos/logos/` e `recursos/referencias/`.
+- Selecione a melhor foto e a melhor referência de layout.
 
-## Quality gates
+### 2. Copy da Arte e Legenda
+- Defina o selo, a headline exata (entre aspas), o subtítulo de apoio e o CTA visual.
+- Escreva a legenda completa e persuasiva com gancho, desenvolvimento e CTA para o direct ou comentários.
 
-- mensagem compreendida em até dois segundos;
-- apenas um ponto focal dominante;
-- texto correto e legível em tela pequena;
-- arte adiciona significado, não apenas decoração;
-- identidade, rosto, produto e logo corretos;
-- legenda aprofunda sem repetir integralmente a imagem;
-- CTA tem destino real;
-- PNG final `1080x1350`.
+### 3. Geração via `generate_image`
+- Invoque `generate_image` com:
+  - `AspectRatio`: `"3:4"` (1080×1350)
+  - `ImagePaths`: `["recursos/referencias/ref.jpg", "recursos/fotos/foto.jpg", "recursos/logos/logo.png"]`
+  - `Prompt`: Descrição editorial completa detalhando cada elemento visual em inglês/português estruturado.
+  - `ImageName`: `slug_do_post_arte`
 
-## Saída
+### 4. Salvamento e Prévia
+- Salve a imagem gerada em `saidas/posts-individuais/{slug}/slide-01.png` (ou `arte-final.jpg/png`).
+- Crie o manifesto `publicacao.json` com campos `id`, `slug`, `tipo: "post-individual"`, `titulo`, `legenda`, `imagens: ["saidas/posts-individuais/{slug}/slide-01.png"]`, `slides`, `headline`, `cta`.
+- Execute `npm run criar-previa -- saidas/posts-individuais/{slug}/publicacao.json`.
+- Execute `npm run atualizar-vitrine`.
 
-Crie o manifesto `publicacao.json`, o preview `previas/{slug}.html` e atualize a vitrine. Mantenha estado `rascunho` até revisão.
+---
 
-Crie o job de aprovação com `npm run aprovar:criar -- CAMINHO_PUBLICACAO`.
+## 🔍 Quality Gates Bloqueantes
+
+- A arte parece uma produção de design editorial profissional?
+- As referências de `recursos/referencias/` foram aproveitadas?
+- A pessoa está harmoniosamente iluminada e integrada na cena?
+- O texto está correto em português e tem 4 níveis de hierarquia?
+- O preview local abre corretamente com a imagem e avatar?
+
+Se tudo estiver aprovado visualmente, crie o job para aprovação:
+```powershell
+npm run aprovar:criar -- saidas/posts-individuais/{slug}/publicacao.json
+```
