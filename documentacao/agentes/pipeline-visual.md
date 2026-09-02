@@ -40,6 +40,55 @@ Antes de gerar qualquer peça, o agente deve inspecionar visualmente as imagens 
 
 ---
 
+## 🧠 Árvore de Decisão Inteligente: Quando Usar Foto e Quando NÃO Usar
+
+O Criativo AI Studio decide a composição visual **automaticamente com base no teor do conteúdo e no objetivo do post**. O agente nunca deve forçar fotos humanas onde o conteúdo pede tipografia ou infográfico, e vice-versa.
+
+```mermaid
+graph TD
+    A["Análise do Conteúdo & Headline"] --> B{"Qual é a essência da mensagem?"}
+    B -->|"História pessoal, bastidor, autoridade, 1ª pessoa"| C["📸 FOTO AUTORAL (Retrato)<br>Passe foto do usuário via ImagePaths"]
+    B -->|"Provocação, axioma, frase forte, verdade desconfortável"| D["✍️ TIPOGRÁFICO PURO (Sem foto)<br>Foco em peso de fonte e espaço negativo"]
+    B -->|"Framework, etapas 1-2-3, Antes vs Depois, comparativo"| E["📊 DIAGRAMA / INFOGRÁFICO<br>Caixas, nós, tabelas e setas de fluxo"]
+    B -->|"Dashboard, automação invisível, arquitetura de IA"| F["💻 MOCKUP / 3D CONCEITUAL<br>Telas, nós de rede ou interfaces"]
+    B -->|"Prato, vinho, produto físico, livro, espaço físico"| G["📦 FOTOGRAFIA DE PRODUTO / STILL<br>Foco absoluto no objeto ou ambiente"]
+```
+
+### 1. `foto_autoral` (Retrato Humano de Autoridade)
+- **Gatilhos no Conteúdo:**
+  - Narrativas em 1ª pessoa (*"Como eu estruturei...", "Erros que cometi..."*).
+  - Posicionamento pessoal e liderança de opinião.
+  - Convites diretos e chamadas para mentoria/consultoria (*"Fale comigo no direct"*).
+  - Bastidores, rotina real e marcos de carreira.
+- **Por que usar:** Gera identificação, empatia e confiança humana.
+
+### 2. `tipografico_puro` (Manifesto & Impacto — SEM Foto de Pessoa)
+- **Gatilhos no Conteúdo:**
+  - Frases axiomáticas curtas e contundentes (*"Se sua IA precisa de você o tempo todo, você não tem automação. Tem um estagiário digital."*).
+  - Alertas de mercado e provocações urgentes (*"Em 2026, quem não tem agentes na retaguarda paga o dobro."*).
+  - Declarações de princípios e manifestos da marca.
+- **Por que NÃO usar foto:** Uma foto de pessoa distrai o olhar e enfraquece o impacto visceral da frase. O poder está 100% no contraste, no peso da tipografia e no espaço negativo.
+
+### 3. `diagrama_infografico` (Framework & Método — SEM Foto de Pessoa)
+- **Gatilhos no Conteúdo:**
+  - Estruturas de 3 a 5 passos (*"A anatomia de um sistema multiagente"*).
+  - Comparativos visuais lado a lado (*"Processo Manual vs Processo com IA"* ou *"Antes vs Depois"*).
+  - Checklists, fluxogramas, árvores de decisão e tabelas.
+- **Por que NÃO usar foto:** É um conteúdo com alto potencial de **salvamento**. O leitor quer clareza visual dos dados para guardar e consultar como material de estudo.
+
+### 4. `mockup_cenario` (Conceitual & Produto Digital)
+- **Gatilhos no Conteúdo:**
+  - Demonstração de ferramentas, interfaces, dashboards ou código em execução.
+  - Conceitos de infraestrutura invisível (*"O que acontece nos bastidores quando a IA roda em silêncio"*).
+- **Por que NÃO usar foto:** Materializa o intangível (software/inteligência) em forma visual moderna.
+
+### 5. `produto_still` (Fotografia de Objeto/Espaço)
+- **Gatilhos no Conteúdo:**
+  - Negócios de gastronomia (cortes de carnes, vinhos, sobremesas), e-commerce físico, arquitetura/decoração.
+- **Por que usar:** O produto ou ambiente é o protagonista do desejo de compra.
+
+---
+
 ## 📸 Seleção, Variação e Consistência Facial das Fotos (`recursos/fotos/`)
 
 Quando a pasta `recursos/fotos/` contiver fotos da pessoa/titular da marca:

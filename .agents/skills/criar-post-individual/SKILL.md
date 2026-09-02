@@ -13,22 +13,25 @@ Leia `documentacao/agentes/contrato-operacional.md`, `documentacao/agentes/quali
 
 ## 🎨 Como Definir a Direção de Arte da Peça
 
-1. **Inspecione as Referências do Usuário (APENAS Estilo e Composição):**
+1. **Decisão Inteligente do Ponto Focal (Foto vs Tipográfico vs Infográfico):**
+   - **Se o conteúdo for provocação/manifesto/frase forte:** Use `ponto_focal: "tipografico_puro"`. Foque em tipografia dominante e texturas de fundo da marca. **NÃO use foto de pessoa.**
+   - **Se o conteúdo for método/processo/comparativo:** Use `ponto_focal: "diagrama_infografico"`. Foque em caixas, nós e fluxo estruturado. **NÃO use foto de pessoa.**
+   - **Se o conteúdo for história pessoal/autoridade/convite direto:** Use `ponto_focal: "foto_autoral"`. Selecione uma foto adequada em `recursos/fotos/` e inclua em `ImagePaths`.
+   - **Se o conteúdo for software/tecnologia:** Use `ponto_focal: "mockup_cenario"`.
+
+2. **Inspecione as Referências do Usuário (APENAS Estilo e Composição):**
    - Abra e analise as imagens em `recursos/referencias/`.
    - Identifique a atmosfera: é clean/minimalista? É acolhedora/quente? É luxuosa/sóbria? É vibrante/pop? É técnica/moderna?
    - Observe como os textos, fotos e elementos gráficos são distribuídos nas referências do usuário.
    - **REGRA CRÍTICA ANTI-CÓPIA:** Referências servem exclusivamente para direção artística. **NUNCA copie nomes de pessoas, marcas, designers, @handles, assinaturas, logos ou textos das referências.** A única identidade permitida na arte é a do usuário atual (`conteudos/identidade-visual.yml`).
 
-2. **Inspecione as Cores e Fontes da Marca:**
+3. **Inspecione as Cores e Fontes da Marca:**
    - Leia `conteudos/identidade-visual.yml` e `recursos/brand/tokens.css`.
    - Use as cores da marca (fundo, texto, destaque, acento) no prompt.
 
-3. **Seleção Inteligente e Variação de Fotos (`recursos/fotos/`):**
-   - **NÃO use sempre a mesma foto.** Inspecione todo o acervo em `recursos/fotos/` e selecione uma foto diferente e coerente com a mensagem do post (postura séria, descontraída, close, meio-corpo, etc.).
-   - Passe a foto selecionada em `ImagePaths`.
-
-4. **Uso de `ImagePaths` e Logo:**
-   - Passe a referência estética de `recursos/referencias/`, a foto selecionada de `recursos/fotos/` e o logo oficial de `recursos/logos/` (se houver).
+4. **Uso de `ImagePaths`:**
+   - Para posts com foto: passe a referência estética de `recursos/referencias/`, a foto selecionada de `recursos/fotos/` e o logo oficial de `recursos/logos/` (se houver).
+   - Para posts tipográficos/diagramas: passe **apenas a referência estética de layout** de `recursos/referencias/` e o logo oficial (sem foto de pessoa).
 
 ---
 

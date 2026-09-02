@@ -38,6 +38,18 @@ Defina de três a cinco territórios editoriais. Cada pilar precisa conter:
 
 Pilares não são rótulos vagos como "dicas", "motivação" ou "bastidores". Nomeie um território que oriente decisões.
 
+## Matriz de Pontos Focais (Variedade e Ritmo do Feed)
+
+Para evitar que o feed fique monótono e repetitivo com fotos da mesma pessoa em todos os posts, o planejamento deve alternar estrategicamente entre 5 tipos de pontos focais:
+
+1. **`foto_autoral` (Retrato & Autoridade):** Foto da pessoa em `recursos/fotos/`. Usado para posicionamento, histórias pessoais, bastidores, liderança e autoridade direta.
+2. **`tipografico_puro` (Manifesto & Impacto):** Sem fotos de pessoas. O poder visual está no peso das fontes, hierarquia, espaço negativo e texturas de fundo da marca. Usado para frases de impacto, verdades desconfortáveis, manifestos e provocações.
+3. **`diagrama_infografico` (Framework & Método):** Estruturas visuais, fluxogramas, comparativos lado a lado (*"Antes vs Depois"*, *"Método Tradicional vs Novo"*), nós conectados, tabelas ou checklists. Usado para educar e provar capacidade técnica.
+4. **`mockup_cenario` (Conceitual & Produto Digital):** Telas de dashboards, interfaces de software, nós de rede/IA, ilustrações 3D minimalistas ou ambientes de estúdio/mesa de trabalho.
+5. **`produto_still` (Fotografia de Objeto/Ambiente):** Foco em produtos físicos, embalagens, livros, pratos gastronômicos ou espaços de arquitetura.
+
+Ao montar o calendário ou lote de posts, **distribua esses tipos** (ex: 2 posts de foto autoral, 2 tipográficos, 2 infográficos/diagramas por semana).
+
 ## Arquitetura da pauta
 
 Para cada ideia, defina:
@@ -45,12 +57,12 @@ Para cada ideia, defina:
 1. objetivo primário;
 2. pilar;
 3. público e nível de consciência;
-4. tensão, pergunta ou oportunidade;
-5. mensagem central em uma frase;
-6. prova, exemplo ou fonte necessária;
-7. formato e justificativa;
-8. CTA;
-9. esforço e ativos necessários;
+4. tipo de ponto focal (`foto_autoral`, `tipografico_puro`, `diagrama_infografico`, `mockup_cenario` ou `produto_still`);
+5. tensão, pergunta ou oportunidade;
+6. mensagem central em uma frase;
+7. prova, exemplo ou fonte necessária;
+8. formato (individual, carrossel, anúncio, stories);
+9. CTA e destino;
 10. estado e próxima skill.
 
 ## Brief profissional
