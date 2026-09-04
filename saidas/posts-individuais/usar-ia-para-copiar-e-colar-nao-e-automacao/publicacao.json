@@ -1,0 +1,37 @@
+{
+  "id": "POST-2026-09-04-17H",
+  "slug": "usar-ia-para-copiar-e-colar-nao-e-automacao",
+  "tipo": "post-individual",
+  "formato": "post-individual",
+  "dimensao": "1080x1350",
+  "pilar": "Playbooks & Bastidores",
+  "criado_em": "2026-09-04T08:00:00-03:00",
+  "data_agendada": "2026-09-04T17:00:00-03:00",
+  "imagens": [
+    "saidas/posts-individuais/usar-ia-para-copiar-e-colar-nao-e-automacao/slide-01.jpg"
+  ],
+  "slides": [
+    {
+      "src": "saidas/posts-individuais/usar-ia-para-copiar-e-colar-nao-e-automacao/slide-01.jpg"
+    }
+  ],
+  "legenda": "Muitos empresários dizem com orgulho: \"Nossa empresa já usa inteligência artificial\".\n\nAí você entra na rotina e descobre o que eles realmente fazem:\nO funcionário abre uma aba no navegador, pensa em um prompt, espera o texto ser gerado, revisa, copia com Ctrl+C e cola com Ctrl+V dentro do CRM ou do e-mail.\n\nSe o processo precisa de uma pessoa clicando e esperando a tela carregar a cada etapa, isso não é automação. É apenas uma ferramenta de apoio que virou mais um item para sobrecarregar a lista de afazeres diários.\n\nA virada de chave para 2026 é entender a diferença entre:\n→ Usar IA: Você lembra de abrir a ferramenta quando sobra tempo.\n→ Ter IA Implementada: Ela monitora eventos, valida regras, dispara ações e concilia dados nos bastidores sem ninguém pedir.\n\nVocê não precisa ser o operador da IA. Você precisa ser o gestor da inteligência do seu negócio.\n\nQuantas horas da semana você ou sua equipe ainda perdem fazendo trabalho de \"cabo USB\" entre ferramentas?\n\nComente abaixo ou me mande uma mensagem no direct se quiser descobrir onde os agentes podem ser implementados na sua empresa.\n\n#EscolaDeFerramentas #IAparaNegócios #AgentesAutônomos #AutomaçãoInteligente #EficiênciaOperacional #IvanNogueira #TransformaçãoDigital #GestãoEmpresarial #ProdutividadeB2B",
+  "titulo": "Usar IA para copiar e colar respostas no chat não é automação",
+  "headline": "USAR IA PARA FICAR COPIANDO E COLANDO RESPOSTAS DO CHAT NÃO É AUTOMAÇÃO. É SÓ MAIS UMA TAREFA MANUAL NA SUA AGENDA.",
+  "cta": "Quantas horas seu time perde com tarefas manuais? Comente aqui embaixo.",
+  "identidade_visual": {
+    "tema": "editorial_quente",
+    "cor_fundo": "#F3EDE2",
+    "cor_destaque": "#C84C0C",
+    "cor_texto": "#111111",
+    "fonte_titulo": "Inter",
+    "fonte_texto": "DM Sans"
+  },
+  "status": "aprovado",
+  "aprovacao_visual": "aprovado",
+  "aprovacao_publicacao": "aprovado",
+  "urlsPublicas": [
+    "https://navibotlab.github.io/meu-social-midia/saidas/posts-individuais/usar-ia-para-copiar-e-colar-nao-e-automacao/slide-01.jpg"
+  ],
+  "previewPublico": "https://navibotlab.github.io/meu-social-midia/previas/usar-ia-para-copiar-e-colar-nao-e-automacao.html"
+}
