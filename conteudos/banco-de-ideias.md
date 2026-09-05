@@ -11,7 +11,7 @@ Ideias e pautas de conteúdo mapeadas e datadas para o Criativo AI Studio.
 | `POST-2026-09-03-17H-EXTRA` | 03/09/2026 17:00 | Quem Não Tem Agentes de IA na Retaguarda Está Pagando o Dobro | Visão & Tendências | post-individual | Alta | publicado |
 | `POST-2026-09-04-09H` | 04/09/2026 09:00 | Se a sua empresa ainda perde 4h/dia em planilhas, instala esse agente | Comparações (VS) | carrossel | Alta | publicado |
 | `POST-2026-09-04-13H30` | 04/09/2026 13:30 | O único fluxo de IA que qualifica leads no WhatsApp em 15 segundos | Setups & Ferramentas | carrossel | Alta | publicado (https://www.instagram.com/p/Dc3zORcD6Gm/) |
-| `POST-2026-09-05-07H` | 05/09/2026 07:00 | A Arte do Carrossel Viral: Formato, Safe Zone e Retenção | IA na Prática | carrossel | Alta | agendado (07:00) [Gatilho: CARROSSEL] |
+| `POST-2026-09-05-07H` | 05/09/2026 07:00 | A Arte do Carrossel Viral: Formato, Safe Zone e Retenção | IA na Prática | carrossel | Alta | publicado (https://www.instagram.com/p/Dc5tPm5oGO2/) [Gatilho: CARROSSEL] |
 | `POST-2026-09-05-09H` | 05/09/2026 09:00 | 7 Ferramentas de IA que nenhuma empresa deveria operar sem em 2026 | Setups & Ferramentas | carrossel | Alta | planejado [Gatilho: TOP7] |
 | `POST-2026-09-05-13H30` | 05/09/2026 13:30 | Você poderia estar cobrando R$ 2.500/mês para implementar esse suporte N1 com IA | Monetização & Mercado | carrossel | Alta | planejado [Gatilho: SUPORTE] |
 | `POST-2026-09-05-17H` | 05/09/2026 17:00 | Software engessado vs. Agentes sob medida: onde você perde mais margem | Comparações (VS) | post-individual | Alta | planejado [Ponto focal: diagrama_infografico] |
