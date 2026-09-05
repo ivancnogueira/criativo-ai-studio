@@ -1,0 +1,82 @@
+{
+  "id": "POST-2026-09-05-07H",
+  "slug": "a-arte-do-carrossel-viral",
+  "tipo": "carrossel",
+  "formato": "carrossel",
+  "dimensao": "1080x1350",
+  "pilar": "IA na Prática & Design Estratégico",
+  "criado_em": "2026-09-05T05:40:00-03:00",
+  "data_agendada": "2026-09-05T07:00:00-03:00",
+  "imagens": [
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-01.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-02.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-03.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-04.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-05.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-06.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-07.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-08.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-09.jpg",
+    "saidas/carrosseis/a-arte-do-carrossel-viral/slide-10.jpg"
+  ],
+  "slides": [
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-01.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-02.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-03.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-04.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-05.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-06.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-07.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-08.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-09.jpg"
+    },
+    {
+      "src": "saidas/carrosseis/a-arte-do-carrossel-viral/slide-10.jpg"
+    }
+  ],
+  "legenda": "Você pode passar 5 horas criando um carrossel impecável... se errar em 3 detalhes técnicos, ele vai morrer com 12 curtidas e zero engajamento.\n\nO algoritmo do Instagram não entrega posts só porque eles são \"bonitos\". Ele entrega posts que prendem a atenção e mantêm o dedo da pessoa deslizando na tela.\n\nNeste guia prático de 10 lâminas, eu sintetizei a engenharia exata que usamos para transformar qualquer ideia em um carrossel impossível de ignorar:\n\n1️⃣ O fim do formato 1:1: Se você ainda posta quadrado, está jogando fora 25% da tela do smartphone do seu seguidor. O formato 4:5 (1080x1350) domina o campo de visão.\n2️⃣ A Safe Zone oculta: Se você colocar música na capa, o Instagram pode empurrar seu post para a aba Reels. Quem não respeita a margem de 180px tem o título cortado pela interface.\n3️⃣ Regra de ouro da tipografia: Se o leitor precisar forçar a vista ou aproximar o celular, ele vai embora. Títulos precisam de 50pt+ e texto de apoio de 14pt+.\n4️⃣ A curva de retenção (Slides 2 ao 9): O slide 2 fecha o compromisso de leitura; os slides intermediários constroem a tensão; os slides 8 e 9 entregam a grande virada de chave.\n5️⃣ Fechamento com direção: O carrossel não acaba em silêncio. Ele entrega o próximo passo óbvio.\n\nArrasta para o lado para salvar cada uma dessas medidas e aplicar no seu próximo post.\n\n👇 Quer receber o gabarito completo com as margens de safe zone e o checklist dos 10 slides em alta definição?\n\nComente CARROSSEL aqui embaixo que o meu agente de automação vai te enviar o arquivo direto no direct!\n\n#EscolaDeFerramentas #CarrosselInstagram #CriaçãoDeConteúdo #MarketingDigital #DesignEstratégico #IvanNogueira #RetençãoVisual #SocialMediaBrasil #AutomaçãoComercial #TráfegoOrgânico",
+  "titulo": "A Arte do Carrossel Viral: Formato, Safe Zone e Retenção",
+  "headline": "A ARTE DO CARROSSEL VIRAL",
+  "cta": "Comente CARROSSEL para receber o checklist no direct",
+  "identidade_visual": {
+    "tema": "editorial_quente",
+    "cor_fundo": "#F4EFEA",
+    "cor_destaque": "#D34E23",
+    "cor_texto": "#111111",
+    "fonte_titulo": "Anton",
+    "fonte_texto": "Inter"
+  },
+  "status": "aprovado",
+  "aprovacao_visual": "aprovado",
+  "aprovacao_publicacao": "aprovado",
+  "urlsPublicas": [
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-01.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-02.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-03.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-04.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-05.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-06.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-07.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-08.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-09.jpg",
+    "https://navibotlab.github.io/meu-social-midia/saidas/carrosseis/a-arte-do-carrossel-viral/slide-10.jpg"
+  ],
+  "previewPublico": "https://navibotlab.github.io/meu-social-midia/previas/a-arte-do-carrossel-viral.html"
+}
